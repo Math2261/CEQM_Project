@@ -130,35 +130,66 @@ function addLog(msg) {
 // ================================================================
 // INIT AUTH
 // ================================================================
-// DEV MODE — autenticação real do fórum desativada temporariamente.
-// Apenas solicita o nick via prompt para testes locais.
-// Quando o site for hospedado no fórum, substituir pelo bloco completo.
+// AUTH — detecta automaticamente se está no fórum ou em ambiente de teste
 async function initAuth() {
-  addLog('Modo de desenvolvimento ativo.');
-  addLog('Autenticação do fórum desativada temporariamente.');
+  addLog('Iniciando verificação...');
 
-  const nick = prompt('Nick de desenvolvimento:', '') || '';
+  // Tenta capturar nick do fórum
+  let nick = '';
+  try {
+    nick = await getForumUsername();
+  } catch(e) {
+    addLog('Erro ao capturar nick: ' + e.message);
+  }
 
-  if (!nick.trim()) {
-    addLog('Nenhum nick informado.');
-    document.getElementById('status-dot').classList.add('err');
-    document.getElementById('status-text').textContent='Nenhum nick informado';
-    document.getElementById('auth-denied').classList.remove('hidden');
+  // Se não achou nick do fórum (ambiente externo/teste), usa prompt
+  if (!nick || isBlockedForumIdentity(nick)) {
+    addLog('Fórum não detectado — modo de teste ativo.');
+    nick = prompt('Nick para teste:', '') || '';
+    if (!nick.trim()) {
+      document.getElementById('status-dot').classList.add('err');
+      document.getElementById('status-text').textContent = 'Nenhum nick informado';
+      document.getElementById('auth-denied').classList.remove('hidden');
+      return;
+    }
+    state.nick = nick.trim();
+    state.isAdmin = true;
+    document.getElementById('status-dot').classList.add('ok');
+    document.getElementById('status-text').textContent = 'Modo teste — ' + state.nick;
+    const btn = document.getElementById('btn-entrar');
+    btn.classList.remove('hidden');
+    btn.textContent = 'Entrar como ' + state.nick;
+    addLog('Acesso liberado em modo teste.');
     return;
   }
 
-  addLog('Nick informado: ' + nick);
-  addLog('Acesso liberado em modo dev.');
-
-  state.nick = nick.trim();
-  state.isAdmin = true;
+  // Nick do fórum encontrado — verifica no Sheets
+  addLog('Nick capturado: ' + nick);
+  addLog('Verificando autorização...');
+  try {
+    const res = await apiGet('verificar_membro', { nick });
+    if (!res.autorizado) {
+      addLog('Nick não autorizado.');
+      document.getElementById('status-dot').classList.add('err');
+      document.getElementById('status-text').textContent = 'Nick não autorizado';
+      document.getElementById('auth-denied').classList.remove('hidden');
+      return;
+    }
+    addLog('Autorizado! Cargo: ' + res.cargo);
+    state.nick = nick;
+    state.isAdmin = !!res.is_admin;
+  } catch(e) {
+    // Sheets offline — permite entrada pelo nick do fórum
+    addLog('Sheets offline — acesso pelo nick do fórum.');
+    state.nick = nick;
+    state.isAdmin = false;
+  }
 
   document.getElementById('status-dot').classList.add('ok');
-  document.getElementById('status-text').textContent = 'Dev mode — ' + state.nick;
-
+  document.getElementById('status-text').textContent = 'Verificado — ' + state.nick;
   const btn = document.getElementById('btn-entrar');
   btn.classList.remove('hidden');
-  btn.textContent = '▶ Entrar como ' + state.nick;
+  btn.textContent = 'Entrar como ' + state.nick;
 }
 
 function entrarNoSistema() {
