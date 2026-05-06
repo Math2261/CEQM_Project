@@ -31,10 +31,10 @@
   --green-dim: rgba(46,204,113,.15);
   --green-border: rgba(46,204,113,.25);
 }
-
+ 
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{width:100%;min-height:100vh;background:var(--bg);color:var(--c1);font-family:'Inter',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
-
+ 
 /* ── HEADER ─────────────────────────────── */
 #header{
   position:fixed;top:0;left:0;right:0;z-index:100;
@@ -60,10 +60,10 @@ html,body{width:100%;min-height:100vh;background:var(--bg);color:var(--c1);font-
 #nick-display small{display:block;font-size:10px;color:var(--c4);}
 #nick-display span{display:block;font-size:13px;font-weight:500;color:var(--c1);letter-spacing:-.2px;}
 #avatar-img{width:30px;height:30px;border-radius:50%;background:var(--bg-deep);image-rendering:pixelated;border:1.5px solid var(--border-m);}
-
+ 
 /* ── MAIN ───────────────────────────────── */
 #main{padding-top:68px;min-height:100vh;}
-
+ 
 /* ── ANIMATIONS ─────────────────────────── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
@@ -76,14 +76,14 @@ html,body{width:100%;min-height:100vh;background:var(--bg);color:var(--c1);font-
 @keyframes modalIn{from{opacity:0;transform:scale(.96) translateY(8px);}to{opacity:1;transform:scale(1) translateY(0);}}
 @keyframes pulse{0%,100%{opacity:.3;transform:scale(.7);}50%{opacity:1;transform:scale(1);}}
 @keyframes blink2{0%,100%{opacity:1;}50%{opacity:.3;}}
-
+ 
 .stagger-1{animation:fadeUp .5s cubic-bezier(.4,0,.2,1) .05s both;}
 .stagger-2{animation:fadeUp .5s cubic-bezier(.4,0,.2,1) .12s both;}
 .stagger-3{animation:fadeUp .5s cubic-bezier(.4,0,.2,1) .19s both;}
 .stagger-4{animation:fadeUp .5s cubic-bezier(.4,0,.2,1) .26s both;}
 .stagger-5{animation:fadeUp .5s cubic-bezier(.4,0,.2,1) .33s both;}
 .fade-screen{animation:fadeIn .3s ease both;}
-
+ 
 /* ── AUTH ───────────────────────────────── */
 #auth-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:2rem;text-align:center;}
 .auth-logo-mark{width:80px;height:80px;border-radius:0;background:transparent;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;box-shadow:none;}
@@ -102,17 +102,17 @@ html,body{width:100%;min-height:100vh;background:var(--bg);color:var(--c1);font-
 .btn-primary{width:100%;padding:12px;background:var(--c1);border:none;color:#000;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;letter-spacing:-.2px;border-radius:var(--r-sm);cursor:pointer;transition:all .2s;margin-top:1.25rem;}
 .btn-primary:hover{background:var(--c2);transform:scale(1.01);}
 .btn-primary:disabled{opacity:.35;cursor:not-allowed;transform:none;}
-
+ 
 /* ── HOME ───────────────────────────────── */
 #home-screen{padding:2.5rem 3rem;max-width:1280px;margin:0 auto;}
-
+ 
 /* Hero */
 .hero-section{margin-bottom:3rem;}
 .hero-greeting{font-size:13px;font-weight:500;color:var(--c4);letter-spacing:.5px;text-transform:uppercase;margin-bottom:.5rem;}
 .hero-title{font-size:42px;font-weight:700;color:var(--c1);letter-spacing:-.8px;line-height:1.1;margin-bottom:.75rem;}.hero-title .typewriter{color:var(--green);border-right-color:var(--green);}
 .hero-title .typewriter{display:inline-block;overflow:hidden;white-space:nowrap;border-right:2px solid var(--c3);vertical-align:bottom;}
 .hero-sub{font-size:16px;color:var(--c3);font-weight:400;max-width:480px;}
-
+ 
 /* Bento grid */
 .bento-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:1.25rem;margin-bottom:2rem;}
 .bento-card{
@@ -153,7 +153,7 @@ html,body{width:100%;min-height:100vh;background:var(--bg);color:var(--c1);font-
 .dot-treino{background:var(--green);}
 .dot-locked{background:#ff453a;border-radius:50%;}
 .dot-open{background:#ff9f0a;animation:pulse 1.4s infinite;}
-
+ 
 /* Stats bento */
 .stats-bento{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;}
 .stat-card{
@@ -169,7 +169,7 @@ html,body{width:100%;min-height:100vh;background:var(--bg);color:var(--c1);font-
   background-size:200% 100%;animation:shimmer 1.5s infinite;
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
-
+ 
 /* ── SIMULADO ───────────────────────────── */
 #simulado-screen{padding:2rem 3rem;max-width:900px;margin:0 auto;}
 .sim-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.75rem;}
@@ -180,10 +180,10 @@ html,body{width:100%;min-height:100vh;background:var(--bg);color:var(--c1);font-
 .sim-badge.treino{background:rgba(48,209,88,.1);color:#30d158;border:1px solid rgba(48,209,88,.2);}
 .sim-badge.real{background:rgba(255,159,10,.1);color:#ff9f0a;border:1px solid rgba(255,159,10,.2);}
 .q-counter{margin-left:auto;font-size:13px;color:var(--c4);}
-
+ 
 .progress-bar-wrap{height:3px;background:rgba(255,255,255,.08);border-radius:99px;margin-bottom:2rem;overflow:hidden;}
 .progress-bar-fill{height:100%;background:var(--c1);transition:width .6s cubic-bezier(.4,0,.2,1);border-radius:99px;}
-
+ 
 .question-card{background:var(--bg-card);border:1px solid var(--border);border-radius:18px;padding:2.5rem;box-shadow:0 4px 24px rgba(0,0,0,.2);animation:fadeUp .35s both;}
 .q-meta{display:flex;align-items:center;gap:10px;margin-bottom:1.75rem;}
 .q-num{font-size:11px;font-weight:700;color:var(--c5);letter-spacing:1px;font-variant-numeric:tabular-nums;}
@@ -205,7 +205,7 @@ html,body{width:100%;min-height:100vh;background:var(--bg);color:var(--c1);font-
 .btn-secondary:hover{background:rgba(255,255,255,.1);}
 .btn-confirm{background:var(--c1);border:none;color:#000;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;padding:9px 22px;border-radius:10px;cursor:pointer;transition:all .15s;}
 .btn-confirm:hover{background:var(--c2);transform:scale(1.02);}
-
+ 
 .gabarito-card{background:rgba(48,209,88,.05);border:1.5px solid rgba(48,209,88,.15);border-left:3px solid #30d158;border-radius:12px;padding:1.5rem;margin-top:1.75rem;animation:fadeUp .3s both;}
 .gabarito-title{font-size:11px;font-weight:600;color:rgba(48,209,88,.7);letter-spacing:.5px;text-transform:uppercase;margin-bottom:.75rem;}
 .gabarito-text{font-size:14px;line-height:1.7;color:var(--c2);font-style:italic;}
@@ -217,7 +217,7 @@ html,body{width:100%;min-height:100vh;background:var(--bg);color:var(--c1);font-
 .aval-parcial:hover,.aval-parcial.selected{background:rgba(255,159,10,.2);border-color:#ff9f0a;}
 .aval-errei{background:rgba(255,69,58,.08);border-color:rgba(255,69,58,.15);color:#ff453a;}
 .aval-errei:hover,.aval-errei.selected{background:rgba(255,69,58,.2);border-color:#ff453a;}
-
+ 
 /* ── RESULT ─────────────────────────────── */
 .result-screen{text-align:center;padding:5rem 2rem;animation:fadeUp .4s both;}
 .result-check{width:80px;height:80px;border-radius:50%;background:rgba(48,209,88,.15);border:1.5px solid rgba(48,209,88,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 2rem;}
@@ -232,7 +232,7 @@ html,body{width:100%;min-height:100vh;background:var(--bg);color:var(--c1);font-
 .result-stat-n.errei{color:#ff453a;}
 .result-stat-l{font-size:12px;color:var(--c4);margin-top:4px;}
 .result-actions{display:flex;gap:.75rem;justify-content:center;}
-
+ 
 /* ── ADMIN ──────────────────────────────── */
 #admin-screen{padding:2rem 3rem;max-width:1200px;margin:0 auto;}
 .admin-tabs{display:flex;gap:2px;margin-bottom:1.5rem;background:rgba(255,255,255,.05);padding:3px;border-radius:12px;width:fit-content;}
@@ -262,7 +262,7 @@ tr:hover td{background:rgba(255,255,255,.03);}
 .btn-sm.dark:hover{background:var(--c2);}
 .btn-corrigir{background:rgba(255,255,255,.06);border:1px solid var(--border);color:var(--c2);font-family:'Inter',sans-serif;font-size:12px;font-weight:500;padding:5px 12px;border-radius:var(--r-xs);cursor:pointer;transition:all .15s;}
 .btn-corrigir:hover{background:rgba(255,255,255,.1);}
-
+ 
 /* ── MODAL ──────────────────────────────── */
 #modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;display:none;align-items:center;justify-content:center;backdrop-filter:blur(8px);}
 #modal-overlay.open{display:flex;}
@@ -280,11 +280,11 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
 .btn-cancel:hover{background:rgba(255,255,255,.05);}
 .btn-save{background:var(--c1);border:none;color:#000;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;padding:9px 22px;border-radius:var(--r-sm);cursor:pointer;transition:all .15s;}
 .btn-save:hover{background:var(--c2);}
-
+ 
 /* ── LOADING ────────────────────────────── */
 .loading-spinner{display:inline-block;width:20px;height:20px;border:2px solid rgba(255,255,255,.1);border-top-color:var(--c3);border-radius:50%;animation:spin .7s linear infinite;}
 .shimmer-line{height:12px;border-radius:99px;background:linear-gradient(90deg,rgba(255,255,255,.05) 25%,rgba(255,255,255,.1) 50%,rgba(255,255,255,.05) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;}
-
+ 
 /* ── TOAST ──────────────────────────────── */
 #toast{position:fixed;bottom:2rem;right:2rem;z-index:300;display:flex;flex-direction:column;gap:.5rem;}
 .toast-item{background:rgba(45,45,47,0.95);backdrop-filter:blur(20px);border:1px solid var(--border-m);border-radius:12px;padding:12px 16px;font-size:13px;color:var(--c1);font-weight:500;animation:toastIn .3s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;gap:10px;min-width:220px;box-shadow:0 8px 32px rgba(0,0,0,.4);}
@@ -292,7 +292,7 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
 .toast-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
 .toast-dot.success{background:var(--ok);}
 .toast-dot.error{background:var(--err);}
-
+ 
 /* ── HALL DO CQ ─────────────────────────── */
 #hall-screen{padding:2.5rem 3rem;max-width:1280px;margin:0 auto;}
 .hall-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;margin-top:1.5rem;}
@@ -321,10 +321,10 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
 .hall-filter-btn.active{background:var(--green-dim);color:var(--green);border-color:var(--green-border);}
 .hall-count{font-size:13px;color:var(--c4);margin-top:.75rem;}
 .hall-count span{color:var(--green);font-weight:600;}
-
+ 
 /* Admin add button */
 .hall-admin-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem;}
-
+ 
 /* ── MISC ───────────────────────────────── */
 .hidden{display:none!important;}
 .divider{height:1px;background:var(--border);margin:1.5rem 0;}
@@ -332,8 +332,8 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
 .q-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:.75rem;}
 .form-group label{font-size:11px;font-weight:600;color:var(--c4);letter-spacing:.3px;text-transform:uppercase;display:block;margin-bottom:6px;}
 .resp-text{max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--c4);}
-
-
+ 
+ 
 /* ── REVISÃO TREINO ─────────────────────── */
 .revisao-card{
   background:var(--bg-card);border:1px solid var(--border);border-radius:16px;
@@ -380,7 +380,7 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
 .revisao-total-label{font-size:12px;font-weight:600;color:var(--c4);letter-spacing:.4px;text-transform:uppercase;margin-bottom:.5rem;}
 .revisao-total-num{font-size:56px;font-weight:700;letter-spacing:-1px;transition:color .3s;font-variant-numeric:tabular-nums;}
 .revisao-total-sub{font-size:13px;color:var(--c4);margin-top:4px;}
-
+ 
 /* ── PROVA REAL ALERTA ──────────────────── */
 #prova-alerta{
   position:fixed;bottom:5rem;left:50%;transform:translateX(-50%);z-index:400;
@@ -403,8 +403,8 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
   transition:background .15s;flex-shrink:0;
 }
 #prova-alerta .alerta-btn:hover{background:#ffb340;}
-
-
+ 
+ 
 /* ── EDITOR DE GABARITO ─────────────────── */
 .gab-editor-wrap{border:1.5px solid var(--border);border-radius:var(--r-sm);overflow:hidden;}
 .gab-toolbar{
@@ -433,7 +433,7 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
 }
 .gab-editor:empty::before{content:attr(data-placeholder);color:var(--c5);pointer-events:none;}
 /* pont-badge já definido no CSS geral */
-
+ 
 @media(max-width:768px){
   .revisao-cols{grid-template-columns:1fr;}
 }
@@ -449,7 +449,7 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
 </style>
 </head>
 <body>
-
+ 
 <header id="header">
   <div id="logo-area">
     <div id="logo-mark"><img src="https://i.imgur.com/gjSYhuy.png" alt="CEQM" style="width:32px;height:32px;object-fit:contain;image-rendering:auto;filter:brightness(1.1);"></div>
@@ -473,9 +473,9 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
     <img id="avatar-img" src="" alt="avatar" onerror="this.src='data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='"/>
   </div>
 </header>
-
+ 
 <main id="main">
-
+ 
 <!-- AUTH -->
 <div id="auth-screen">
   <div class="auth-logo-mark stagger-1" style="background:transparent;box-shadow:none;"><img src="https://i.imgur.com/gjSYhuy.png" alt="CEQM" style="width:56px;height:56px;object-fit:contain;filter:brightness(1.1);"></div>
@@ -497,7 +497,7 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
     <button class="btn-primary hidden" id="btn-entrar" onclick="entrarNoSistema()">Continuar</button>
   </div>
 </div>
-
+ 
 <!-- HOME -->
 <div id="home-screen" class="hidden">
   <div class="hero-section stagger-1">
@@ -508,7 +508,7 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
     </div>
     <div class="hero-sub">Escolha uma modalidade e comece a praticar os códigos militares.</div>
   </div>
-
+ 
   <div class="bento-grid">
     <div class="bento-card stagger-2" onclick="startSimulado('treino')">
       <div class="bento-icon">
@@ -527,7 +527,7 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
       <div class="bento-badge badge-locked" id="real-badge"><span class="dot-badge dot-locked"></span>Bloqueado</div>
     </div>
   </div>
-
+ 
   <div class="stats-bento">
     <div class="stat-card stagger-2">
       <div class="stat-label"><span class="stat-label-dot" style="background:var(--green);"></span>Treinos realizados</div>
@@ -547,7 +547,7 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
     </div>
   </div>
 </div>
-
+ 
 <!-- SIMULADO -->
 <div id="simulado-screen" class="hidden fade-screen">
   <div class="sim-header">
@@ -561,7 +561,7 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
   <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progress-fill" style="width:10%;"></div></div>
   <div id="question-area"></div>
 </div>
-
+ 
 <!-- RESULT -->
 <div id="result-screen" class="hidden">
   <div class="result-screen">
@@ -577,7 +577,7 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
     </div>
   </div>
 </div>
-
+ 
 <!-- HALL DO CQ -->
 <div id="hall-screen" class="hidden fade-screen">
   <div class="hero-section stagger-1" style="margin-bottom:1.5rem;">
@@ -585,7 +585,7 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
     <div class="hero-title" style="font-size:32px;">Hall do CQ</div>
     <div class="hero-sub">Todos que conquistaram o Certificado de Qualificação de Oficiais Intermediários pelo CEQM.</div>
   </div>
-
+ 
   <div class="hall-admin-bar stagger-2">
     <div class="hall-filter" id="hall-filter"></div>
     <div style="display:flex;gap:.5rem;flex-shrink:0;">
@@ -595,11 +595,11 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
       <input type="file" id="input-json-upload" accept=".json" class="hidden" onchange="importarJSON(event)">
     </div>
   </div>
-
+ 
   <div class="hall-count stagger-2" id="hall-count"></div>
   <div class="hall-grid" id="hall-grid"></div>
 </div>
-
+ 
 <!-- ADMIN -->
 <div id="admin-screen" class="hidden fade-screen">
   <div class="hero-section stagger-1" style="margin-bottom:2rem;">
@@ -654,7 +654,7 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
         <tbody id="sr-correcoes-body"></tbody>
       </table></div>
     </div>
-
+ 
     <div id="tab-correcoes" class="hidden">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
         <div class="section-label" style="margin:0;">Respostas do Simulado Real</div>
@@ -692,14 +692,14 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
     </div>
   </div>
 </div>
-
+ 
 </main>
-
+ 
 <div id="modal-overlay" onclick="closeModalOutside(event)">
   <div class="modal" id="modal-content"></div>
 </div>
 <div id="toast"></div>
-
+ 
 <script>
 // ── TYPEWRITER ───────────────────────────
 function runTypewriter(el, words, speed=80, pause=2200) {
@@ -713,7 +713,7 @@ function runTypewriter(el, words, speed=80, pause=2200) {
   }
   tick();
 }
-
+ 
 // ── HOVER GLOW on bento cards ────────────
 document.querySelectorAll('.bento-card').forEach(card=>{
   card.addEventListener('mousemove',e=>{
@@ -722,7 +722,7 @@ document.querySelectorAll('.bento-card').forEach(card=>{
     card.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');
   });
 });
-
+ 
 // ── ANIMATED COUNTER ─────────────────────
 function animateCounter(el, target, suffix='', duration=1200) {
   if(target==='—'||target===null||target===undefined){el.textContent='—';el.classList.remove('shimmer-active');return;}
@@ -741,7 +741,7 @@ function animateCounter(el, target, suffix='', duration=1200) {
   requestAnimationFrame(step);
 }
 </script>
-
+ 
 <div id="prova-alerta" style="display:none;">
   <div class="alerta-icon">📋</div>
   <div class="alerta-texto">
@@ -750,7 +750,7 @@ function animateCounter(el, target, suffix='', duration=1200) {
   </div>
   <button class="alerta-btn" onclick="fecharAlerta();tentarReal()">Iniciar agora</button>
 </div>
-
+ 
 <script>
 // Polling a cada 30s para detectar liberação do simulado real
 let _provaJaAlertada = false;

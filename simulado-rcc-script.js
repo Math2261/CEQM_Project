@@ -1,7 +1,7 @@
 // ================================================================
 // CONFIG — SUBSTITUA PELA URL DO SEU APPS SCRIPT
 // ================================================================
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx7tI_gTVydkSd-IZXubIqvO8azZASKE97mW9b07VIaGkid0sUL3XuKP1T1YE-vvbAq/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/SEU_SCRIPT_ID_AQUI/exec';
 
 // ================================================================
 // ESTADO GLOBAL
@@ -189,21 +189,21 @@ function entrarNoSistema() {
 // API CALLS
 // ================================================================
 async function apiGet(action, params={}) {
-  const url=new URL(APPS_SCRIPT_URL);
-  url.searchParams.set('action',action);
-  for(const [k,v] of Object.entries(params)) url.searchParams.set(k,v);
-  const res=await fetch(url.toString(),{method:'GET'});
-  if(!res.ok) throw new Error('HTTP '+res.status);
+  const url = new URL(APPS_SCRIPT_URL);
+  url.searchParams.set('action', action);
+  for (const [k, v] of Object.entries(params)) url.searchParams.set(k, String(v));
+  const res = await fetch(url.toString(), { method: 'GET', redirect: 'follow' });
+  if (!res.ok) throw new Error('HTTP ' + res.status);
   return res.json();
 }
 
+// Apps Script não suporta CORS em POST — enviamos tudo via GET com payload encodado
 async function apiPost(action, data={}) {
-  const res=await fetch(APPS_SCRIPT_URL,{
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({action,...data})
-  });
-  if(!res.ok) throw new Error('HTTP '+res.status);
+  const url = new URL(APPS_SCRIPT_URL);
+  url.searchParams.set('action', 'post');
+  url.searchParams.set('data', encodeURIComponent(JSON.stringify({ action, ...data })));
+  const res = await fetch(url.toString(), { method: 'GET', redirect: 'follow' });
+  if (!res.ok) throw new Error('HTTP ' + res.status);
   return res.json();
 }
 
