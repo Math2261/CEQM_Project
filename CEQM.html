@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CEQM · Simulados</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #1d1d1f;
+  --bg-card:  #2d2d2f;
+  --bg-deep:  #3a3a3c;
+  --bg-input: #242426;
+  --c1:       #f5f5f7;
+  --c2:       #d1d1d6;
+  --c3:       #98989d;
+  --c4:       #6e6e73;
+  --c5:       #48484a;
+  --c6:       #3a3a3c;
+  --ok:       #30d158;
+  --warn:     #ff9f0a;
+  --err:      #ff453a;
+  --border:   rgba(255,255,255,0.08);
+  --border-m: rgba(255,255,255,0.14);
+  --r:   14px;
+  --r-sm: 8px;
+  --r-xs: 6px;
+  --green: #2ecc71;
+  --green-dim: rgba(46,204,113,.15);
+  --green-border: rgba(46,204,113,.25);
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:100%;min-height:100vh;background:var(--bg);color:var(--c1);font-family:'Inter',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+/* ── HEADER ─────────────────────────────── */
+#header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(29,29,31,0.85);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:saturate(180%) blur(24px);
+  -webkit-backdrop-filter:saturate(180%) blur(24px);
+  display:flex;align-items:center;padding:0 2.5rem;height:52px;gap:2rem;
+}
+#logo-area{display:flex;align-items:center;gap:10px;flex:1;}
+#logo-mark{width:32px;height:32px;border-radius:0;background:transparent;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+#logo-mark span{display:none;}
+#logo-text{display:flex;flex-direction:column;gap:1px;}
+#logo-title{font-size:14px;font-weight:600;color:var(--c1);letter-spacing:-.3px;line-height:1;}
+#logo-sub{font-size:9px;color:var(--c4);line-height:1;letter-spacing:-.1px;}
+#header-nav{display:flex;gap:2px;}
+.nav-btn{background:none;border:none;color:var(--c3);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;padding:5px 14px;border-radius:20px;cursor:pointer;transition:color .15s,background .15s;}
+.nav-btn:hover{color:var(--c1);background:rgba(255,255,255,.07);}
+.nav-btn.active{color:var(--c1);background:rgba(255,255,255,.09);}
+.nav-btn.admin-btn{color:var(--c4);}
+#avatar-area{display:flex;align-items:center;gap:10px;margin-left:auto;}
+#nick-display{text-align:right;}
+#nick-display small{display:block;font-size:10px;color:var(--c4);}
+#nick-display span{display:block;font-size:13px;font-weight:500;color:var(--c1);letter-spacing:-.2px;}
+#avatar-img{width:30px;height:30px;border-radius:50%;background:var(--bg-deep);image-rendering:pixelated;border:1.5px solid var(--border-m);}
+
+/* ── MAIN ───────────────────────────────── */
+#main{padding-top:68px;min-height:100vh;}
+
+/* ── ANIMATIONS ─────────────────────────── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+@keyframes countUp{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+@keyframes typewriter{from{width:0;}to{width:100%;}}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+@keyframes spin{to{transform:rotate(360deg);}}
+@keyframes toastIn{from{opacity:0;transform:translateX(16px);}to{opacity:1;transform:translateX(0);}}
+@keyframes modalIn{from{opacity:0;transform:scale(.96) translateY(8px);}to{opacity:1;transform:scale(1) translateY(0);}}
+@keyframes pulse{0%,100%{opacity:.3;transform:scale(.7);}50%{opacity:1;transform:scale(1);}}
+@keyframes blink2{0%,100%{opacity:1;}50%{opacity:.3;}}
+
+.stagger-1{animation:fadeUp .5s cubic-bezier(.4,0,.2,1) .05s both;}
+.stagger-2{animation:fadeUp .5s cubic-bezier(.4,0,.2,1) .12s both;}
+.stagger-3{animation:fadeUp .5s cubic-bezier(.4,0,.2,1) .19s both;}
+.stagger-4{animation:fadeUp .5s cubic-bezier(.4,0,.2,1) .26s both;}
+.stagger-5{animation:fadeUp .5s cubic-bezier(.4,0,.2,1) .33s both;}
+.fade-screen{animation:fadeIn .3s ease both;}
+
+/* ── AUTH ───────────────────────────────── */
+#auth-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:2rem;text-align:center;}
+.auth-logo-mark{width:80px;height:80px;border-radius:0;background:transparent;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;box-shadow:none;}
+.auth-logo-mark span{display:none;}
+.auth-title{font-size:38px;font-weight:700;color:var(--c1);letter-spacing:-.8px;line-height:1.1;margin-bottom:8px;animation:fadeUp .5s .1s both;}
+.auth-sub{font-size:16px;color:var(--c3);margin-bottom:2.5rem;animation:fadeUp .5s .2s both;}
+.auth-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);padding:2rem;max-width:400px;width:100%;box-shadow:0 4px 32px rgba(0,0,0,.3);animation:fadeUp .5s .3s both;}
+.auth-status{display:flex;align-items:center;gap:10px;margin-bottom:1.25rem;padding:10px 14px;background:var(--bg-deep);border-radius:var(--r-sm);border:1px solid var(--border);}
+.pulse-dot{width:8px;height:8px;border-radius:50%;background:var(--c5);animation:pulse 1.4s infinite;flex-shrink:0;}
+.pulse-dot.ok{background:var(--ok);animation:none;}
+.pulse-dot.err{background:var(--err);animation:none;}
+#status-text{font-size:13px;color:var(--c3);}
+.auth-log{font-family:'SF Mono',monospace;font-size:11px;color:var(--c4);text-align:left;max-height:80px;overflow-y:auto;line-height:1.8;}
+.auth-log div::before{content:'› ';color:var(--c5);}
+#auth-denied{margin-top:1rem;padding:12px 14px;background:rgba(255,69,58,.1);border:1px solid rgba(255,69,58,.2);border-radius:var(--r-sm);font-size:13px;color:#ff6b60;line-height:1.6;text-align:left;}
+.btn-primary{width:100%;padding:12px;background:var(--c1);border:none;color:#000;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;letter-spacing:-.2px;border-radius:var(--r-sm);cursor:pointer;transition:all .2s;margin-top:1.25rem;}
+.btn-primary:hover{background:var(--c2);transform:scale(1.01);}
+.btn-primary:disabled{opacity:.35;cursor:not-allowed;transform:none;}
+
+/* ── HOME ───────────────────────────────── */
+#home-screen{padding:2.5rem 3rem;max-width:1280px;margin:0 auto;}
+
+/* Hero */
+.hero-section{margin-bottom:3rem;}
+.hero-greeting{font-size:13px;font-weight:500;color:var(--c4);letter-spacing:.5px;text-transform:uppercase;margin-bottom:.5rem;}
+.hero-title{font-size:42px;font-weight:700;color:var(--c1);letter-spacing:-.8px;line-height:1.1;margin-bottom:.75rem;}.hero-title .typewriter{color:var(--green);border-right-color:var(--green);}
+.hero-title .typewriter{display:inline-block;overflow:hidden;white-space:nowrap;border-right:2px solid var(--c3);vertical-align:bottom;}
+.hero-sub{font-size:16px;color:var(--c3);font-weight:400;max-width:480px;}
+
+/* Bento grid */
+.bento-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:1.25rem;margin-bottom:2rem;}
+.bento-card{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:18px;
+  padding:2rem;cursor:pointer;position:relative;overflow:hidden;
+  transition:transform .25s cubic-bezier(.4,0,.2,1), box-shadow .25s, border-color .25s;
+}
+.bento-card::after{
+  content:'';position:absolute;inset:0;border-radius:18px;opacity:0;
+  background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.06) 0%,transparent 60%);
+  transition:opacity .3s;pointer-events:none;
+}
+.bento-card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.4);border-color:var(--border-m);}
+.bento-card:hover::after{opacity:1;}
+.bento-card.locked{opacity:.6;cursor:not-allowed;}
+.bento-card.locked:hover{transform:none;box-shadow:0 0 0 1.5px rgba(255,69,58,.3),0 8px 32px rgba(255,69,58,.08);border-color:rgba(255,69,58,.25);}
+.bento-card.locked:hover::after{opacity:0;}
+.bento-card.real-card{border-color:rgba(255,159,10,.15);}
+.bento-card.real-card.available{border-color:rgba(255,159,10,.3);}
+.bento-card.real-card.available:hover{border-color:rgba(255,159,10,.5);box-shadow:0 16px 40px rgba(255,159,10,.12);}
+.bento-icon{
+  width:52px;height:52px;border-radius:13px;
+  background:rgba(255,255,255,.07);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;
+  transition:background .2s;
+}
+.bento-card:hover .bento-icon{background:rgba(255,255,255,.11);}
+.bento-icon svg{width:22px;height:22px;stroke:var(--c2);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.bento-icon.gold svg{stroke:#ff9f0a;}
+.bento-card.real-card.available .bento-icon{background:rgba(255,159,10,.1);border-color:rgba(255,159,10,.2);}
+.bento-title{font-size:22px;font-weight:700;color:var(--c1);letter-spacing:-.4px;margin-bottom:.5rem;}
+.bento-desc{font-size:14px;color:var(--c3);line-height:1.65;max-width:380px;}
+.bento-badge{display:inline-flex;align-items:center;gap:6px;margin-top:1.25rem;padding:5px 12px;border-radius:99px;font-size:11px;font-weight:500;width:fit-content;}
+.badge-treino{background:var(--green-dim);color:var(--green);border:1px solid var(--green-border);}
+.badge-locked{background:rgba(255,69,58,.08);color:#ff453a;border:1px solid rgba(255,69,58,.2);}
+.badge-open{background:rgba(255,159,10,.1);color:#ff9f0a;border:1px solid rgba(255,159,10,.2);}
+.dot-badge{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+.dot-treino{background:var(--green);}
+.dot-locked{background:#ff453a;border-radius:50%;}
+.dot-open{background:#ff9f0a;animation:pulse 1.4s infinite;}
+
+/* Stats bento */
+.stats-bento{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;}
+.stat-card{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:16px;
+  padding:1.5rem;text-align:left;transition:border-color .2s,transform .2s;
+}
+.stat-card:hover{border-color:var(--border-m);transform:translateY(-2px);}
+.stat-label{font-size:12px;color:var(--c4);font-weight:500;letter-spacing:.2px;margin-bottom:.75rem;display:flex;align-items:center;gap:6px;}
+.stat-label-dot{width:6px;height:6px;border-radius:50%;}
+.stat-num{font-size:32px;font-weight:700;color:var(--c1);letter-spacing:-.5px;line-height:1;font-variant-numeric:tabular-nums;}
+.stat-num.shimmer-active{
+  background:linear-gradient(90deg,var(--c5) 25%,var(--c4) 50%,var(--c5) 75%);
+  background-size:200% 100%;animation:shimmer 1.5s infinite;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+
+/* ── SIMULADO ───────────────────────────── */
+#simulado-screen{padding:2rem 3rem;max-width:900px;margin:0 auto;}
+.sim-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.75rem;}
+.back-btn{background:rgba(255,255,255,.06);border:1px solid var(--border);color:var(--c3);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;padding:7px 16px;border-radius:99px;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:6px;}
+.back-btn:hover{background:rgba(255,255,255,.1);color:var(--c1);}
+.sim-title{font-size:22px;font-weight:700;color:var(--c1);letter-spacing:-.4px;}
+.sim-badge{font-size:11px;font-weight:500;padding:4px 11px;border-radius:99px;}
+.sim-badge.treino{background:rgba(48,209,88,.1);color:#30d158;border:1px solid rgba(48,209,88,.2);}
+.sim-badge.real{background:rgba(255,159,10,.1);color:#ff9f0a;border:1px solid rgba(255,159,10,.2);}
+.q-counter{margin-left:auto;font-size:13px;color:var(--c4);}
+
+.progress-bar-wrap{height:3px;background:rgba(255,255,255,.08);border-radius:99px;margin-bottom:2rem;overflow:hidden;}
+.progress-bar-fill{height:100%;background:var(--c1);transition:width .6s cubic-bezier(.4,0,.2,1);border-radius:99px;}
+
+.question-card{background:var(--bg-card);border:1px solid var(--border);border-radius:18px;padding:2.5rem;box-shadow:0 4px 24px rgba(0,0,0,.2);animation:fadeUp .35s both;}
+.q-meta{display:flex;align-items:center;gap:10px;margin-bottom:1.75rem;}
+.q-num{font-size:11px;font-weight:700;color:var(--c5);letter-spacing:1px;font-variant-numeric:tabular-nums;}
+.q-doc-badge{font-size:11px;font-weight:500;padding:4px 10px;border-radius:99px;}
+.doc-ccm{background:rgba(0,122,255,.12);color:#4c9eff;border:1px solid rgba(0,122,255,.2);}
+.doc-cpm{background:rgba(88,86,214,.12);color:#7b79f5;border:1px solid rgba(88,86,214,.2);}
+.doc-pce{background:rgba(255,149,0,.1);color:#ff9500;border:1px solid rgba(255,149,0,.2);}
+.doc-ccb{background:rgba(175,82,222,.1);color:#bf5af2;border:1px solid rgba(175,82,222,.2);}
+.q-timer{margin-left:auto;font-size:16px;font-weight:600;color:var(--c2);font-variant-numeric:tabular-nums;letter-spacing:.5px;transition:color .3s;}
+.q-timer.warning{color:var(--warn);}
+.q-timer.danger{color:var(--err);animation:blink2 .6s infinite;}
+.q-text{font-size:17px;line-height:1.75;color:var(--c1);font-weight:400;letter-spacing:-.1px;}
+.q-textarea{width:100%;min-height:160px;background:var(--bg-input);border:1.5px solid var(--border);border-radius:12px;color:var(--c1);font-family:'Inter',sans-serif;font-size:15px;line-height:1.65;padding:16px;resize:vertical;outline:none;transition:border-color .2s;margin-top:1.5rem;}
+.q-textarea:focus{border-color:rgba(255,255,255,.3);}
+.q-textarea::placeholder{color:var(--c5);}
+.q-actions{display:flex;justify-content:space-between;align-items:center;margin-top:1rem;}
+.char-count{font-size:12px;color:var(--c5);}
+.btn-secondary{background:rgba(255,255,255,.06);border:1.5px solid var(--border);color:var(--c2);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;padding:9px 20px;border-radius:10px;cursor:pointer;transition:all .15s;}
+.btn-secondary:hover{background:rgba(255,255,255,.1);}
+.btn-confirm{background:var(--c1);border:none;color:#000;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;padding:9px 22px;border-radius:10px;cursor:pointer;transition:all .15s;}
+.btn-confirm:hover{background:var(--c2);transform:scale(1.02);}
+
+.gabarito-card{background:rgba(48,209,88,.05);border:1.5px solid rgba(48,209,88,.15);border-left:3px solid #30d158;border-radius:12px;padding:1.5rem;margin-top:1.75rem;animation:fadeUp .3s both;}
+.gabarito-title{font-size:11px;font-weight:600;color:rgba(48,209,88,.7);letter-spacing:.5px;text-transform:uppercase;margin-bottom:.75rem;}
+.gabarito-text{font-size:14px;line-height:1.7;color:var(--c2);font-style:italic;}
+.autoaval-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:1.25rem;}
+.aval-btn{padding:11px;border-radius:10px;border:1.5px solid transparent;cursor:pointer;font-family:'Inter',sans-serif;font-size:13px;font-weight:500;transition:all .15s;text-align:center;}
+.aval-acertei{background:rgba(48,209,88,.08);border-color:rgba(48,209,88,.2);color:#30d158;}
+.aval-acertei:hover,.aval-acertei.selected{background:rgba(48,209,88,.2);border-color:#30d158;}
+.aval-parcial{background:rgba(255,159,10,.08);border-color:rgba(255,159,10,.2);color:#ff9f0a;}
+.aval-parcial:hover,.aval-parcial.selected{background:rgba(255,159,10,.2);border-color:#ff9f0a;}
+.aval-errei{background:rgba(255,69,58,.08);border-color:rgba(255,69,58,.15);color:#ff453a;}
+.aval-errei:hover,.aval-errei.selected{background:rgba(255,69,58,.2);border-color:#ff453a;}
+
+/* ── RESULT ─────────────────────────────── */
+.result-screen{text-align:center;padding:5rem 2rem;animation:fadeUp .4s both;}
+.result-check{width:80px;height:80px;border-radius:50%;background:rgba(48,209,88,.15);border:1.5px solid rgba(48,209,88,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 2rem;}
+.result-check svg{width:36px;height:36px;stroke:#30d158;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+.result-title{font-size:36px;font-weight:700;color:var(--c1);letter-spacing:-.7px;margin-bottom:8px;}
+.result-sub{font-size:16px;color:var(--c3);margin-bottom:3rem;}
+.result-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:460px;margin:0 auto 3rem;}
+.result-stat{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:1.5rem;}
+.result-stat-n{font-size:40px;font-weight:700;letter-spacing:-.5px;}
+.result-stat-n.acertei{color:#30d158;}
+.result-stat-n.parcial{color:#ff9f0a;}
+.result-stat-n.errei{color:#ff453a;}
+.result-stat-l{font-size:12px;color:var(--c4);margin-top:4px;}
+.result-actions{display:flex;gap:.75rem;justify-content:center;}
+
+/* ── ADMIN ──────────────────────────────── */
+#admin-screen{padding:2rem 3rem;max-width:1200px;margin:0 auto;}
+.admin-tabs{display:flex;gap:2px;margin-bottom:1.5rem;background:rgba(255,255,255,.05);padding:3px;border-radius:12px;width:fit-content;}
+.admin-tab{background:none;border:none;color:var(--c4);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;padding:7px 18px;border-radius:9px;cursor:pointer;transition:all .15s;}
+.admin-tab.active{background:var(--bg-card);color:var(--c1);box-shadow:0 1px 4px rgba(0,0,0,.3);}
+.admin-content{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);padding:1.75rem;box-shadow:0 4px 24px rgba(0,0,0,.2);}
+.control-row{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.25rem;background:rgba(255,255,255,.04);border-radius:12px;margin-bottom:.75rem;border:1px solid var(--border);transition:border-color .2s;}
+.control-row:hover{border-color:var(--border-m);}
+.control-label{font-size:14px;font-weight:500;color:var(--c1);letter-spacing:-.2px;}
+.control-sub{font-size:12px;color:var(--c4);margin-top:3px;}
+.toggle-switch{width:50px;height:28px;background:var(--c5);border-radius:14px;cursor:pointer;transition:background .25s;position:relative;flex-shrink:0;}
+.toggle-switch.on{background:var(--c1);}
+.toggle-switch::after{content:'';position:absolute;top:3px;left:3px;width:22px;height:22px;background:#fff;border-radius:50%;transition:transform .25s;box-shadow:0 1px 4px rgba(0,0,0,.3);}
+.toggle-switch.on::after{transform:translateX(22px);background:#000;}
+.table-wrap{overflow-x:auto;margin-top:.75rem;}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+th{font-size:11px;font-weight:600;color:var(--c4);letter-spacing:.3px;padding:8px 12px;text-align:left;border-bottom:1px solid var(--border);text-transform:uppercase;}
+td{padding:12px 12px;border-bottom:1px solid rgba(255,255,255,.05);color:var(--c2);vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:rgba(255,255,255,.03);}
+.nota-badge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:99px;font-size:11px;font-weight:500;}
+.nota-pendente{background:rgba(255,159,10,.1);color:#ff9f0a;border:1px solid rgba(255,159,10,.2);}
+.nota-corrigido{background:rgba(48,209,88,.1);color:#30d158;border:1px solid rgba(48,209,88,.2);}
+.btn-sm{background:rgba(255,255,255,.06);border:1px solid var(--border);color:var(--c2);font-family:'Inter',sans-serif;font-size:12px;font-weight:500;padding:5px 12px;border-radius:var(--r-xs);cursor:pointer;transition:all .15s;}
+.btn-sm:hover{background:rgba(255,255,255,.1);}
+.btn-sm.dark{background:var(--c1);border-color:var(--c1);color:#000;}
+.btn-sm.dark:hover{background:var(--c2);}
+.btn-corrigir{background:rgba(255,255,255,.06);border:1px solid var(--border);color:var(--c2);font-family:'Inter',sans-serif;font-size:12px;font-weight:500;padding:5px 12px;border-radius:var(--r-xs);cursor:pointer;transition:all .15s;}
+.btn-corrigir:hover{background:rgba(255,255,255,.1);}
+
+/* ── MODAL ──────────────────────────────── */
+#modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;display:none;align-items:center;justify-content:center;backdrop-filter:blur(8px);}
+#modal-overlay.open{display:flex;}
+.modal{background:var(--bg-card);border:1px solid var(--border-m);border-radius:18px;padding:2.25rem;max-width:520px;width:92%;max-height:85vh;overflow-y:auto;box-shadow:0 24px 60px rgba(0,0,0,.5);animation:modalIn .25s cubic-bezier(.4,0,.2,1);}
+.modal h3{font-size:20px;font-weight:700;color:var(--c1);letter-spacing:-.4px;margin-bottom:1.5rem;}
+.modal-field{margin-bottom:1rem;}
+.modal-label{font-size:11px;font-weight:600;color:var(--c4);letter-spacing:.3px;text-transform:uppercase;margin-bottom:6px;}
+.modal-value{background:var(--bg-deep);border:1px solid var(--border);border-radius:var(--r-sm);padding:10px 12px;color:var(--c2);font-size:14px;line-height:1.6;}
+.modal-input{width:100%;background:var(--bg-input);border:1.5px solid var(--border);border-radius:var(--r-sm);color:var(--c1);font-family:'Inter',sans-serif;font-size:14px;padding:10px 12px;outline:none;transition:border-color .15s;}
+.modal-input:focus{border-color:rgba(255,255,255,.3);}
+textarea.modal-input{min-height:100px;resize:vertical;line-height:1.6;}
+select.modal-input{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M0 0l6 8 6-8z' fill='%236e6e73'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;}
+.modal-actions{display:flex;gap:.75rem;justify-content:flex-end;margin-top:1.5rem;}
+.btn-cancel{background:none;border:1.5px solid var(--border);color:var(--c3);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;padding:9px 20px;border-radius:var(--r-sm);cursor:pointer;transition:all .15s;}
+.btn-cancel:hover{background:rgba(255,255,255,.05);}
+.btn-save{background:var(--c1);border:none;color:#000;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;padding:9px 22px;border-radius:var(--r-sm);cursor:pointer;transition:all .15s;}
+.btn-save:hover{background:var(--c2);}
+
+/* ── LOADING ────────────────────────────── */
+.loading-spinner{display:inline-block;width:20px;height:20px;border:2px solid rgba(255,255,255,.1);border-top-color:var(--c3);border-radius:50%;animation:spin .7s linear infinite;}
+.shimmer-line{height:12px;border-radius:99px;background:linear-gradient(90deg,rgba(255,255,255,.05) 25%,rgba(255,255,255,.1) 50%,rgba(255,255,255,.05) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;}
+
+/* ── TOAST ──────────────────────────────── */
+#toast{position:fixed;bottom:2rem;right:2rem;z-index:300;display:flex;flex-direction:column;gap:.5rem;}
+.toast-item{background:rgba(45,45,47,0.95);backdrop-filter:blur(20px);border:1px solid var(--border-m);border-radius:12px;padding:12px 16px;font-size:13px;color:var(--c1);font-weight:500;animation:toastIn .3s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;gap:10px;min-width:220px;box-shadow:0 8px 32px rgba(0,0,0,.4);}
+.toast-item.error{border-color:rgba(255,69,58,.3);}
+.toast-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.toast-dot.success{background:var(--ok);}
+.toast-dot.error{background:var(--err);}
+
+/* ── HALL DO CQ ─────────────────────────── */
+#hall-screen{padding:2.5rem 3rem;max-width:1280px;margin:0 auto;}
+.hall-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;margin-top:1.5rem;}
+.hall-card{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:14px;
+  padding:1rem 1rem 1rem 1rem;
+  display:flex;align-items:center;gap:.875rem;
+  transition:border-color .2s,transform .2s,box-shadow .2s;
+  animation:fadeUp .4s both;
+  cursor:pointer;
+}
+.hall-card:hover{border-color:var(--border-m);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.25);}
+.hall-card:active{transform:translateY(0);box-shadow:none;}
+.hall-avatar{width:52px;height:52px;border-radius:50%;border:1.5px solid var(--border-m);background:var(--bg-deep);image-rendering:auto;flex-shrink:0;object-fit:cover;object-position:center top;}
+.hall-info{flex:1;min-width:0;}
+.hall-nick{font-size:14px;font-weight:600;color:var(--c1);letter-spacing:-.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.hall-edicao{font-size:11px;color:var(--c4);margin-top:2px;font-weight:400;}
+.hall-medal{width:32px;height:32px;object-fit:contain;flex-shrink:0;image-rendering:pixelated;}
+.hall-filter{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem;}
+.hall-filter-btn{
+  background:rgba(255,255,255,.05);border:1px solid var(--border);
+  color:var(--c4);font-family:'Inter',sans-serif;font-size:12px;font-weight:500;
+  padding:5px 14px;border-radius:99px;cursor:pointer;transition:all .15s;
+}
+.hall-filter-btn:hover{color:var(--c1);border-color:var(--border-m);}
+.hall-filter-btn.active{background:var(--green-dim);color:var(--green);border-color:var(--green-border);}
+.hall-count{font-size:13px;color:var(--c4);margin-top:.75rem;}
+.hall-count span{color:var(--green);font-weight:600;}
+
+/* Admin add button */
+.hall-admin-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem;}
+
+/* ── MISC ───────────────────────────────── */
+.hidden{display:none!important;}
+.divider{height:1px;background:var(--border);margin:1.5rem 0;}
+.section-label{font-size:12px;font-weight:600;color:var(--c4);letter-spacing:.4px;text-transform:uppercase;margin-bottom:.75rem;}
+.q-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:.75rem;}
+.form-group label{font-size:11px;font-weight:600;color:var(--c4);letter-spacing:.3px;text-transform:uppercase;display:block;margin-bottom:6px;}
+.resp-text{max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--c4);}
+
+
+/* ── REVISÃO TREINO ─────────────────────── */
+.revisao-card{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:16px;
+  padding:1.75rem;margin-bottom:1.25rem;text-align:left;
+  animation:fadeUp .35s both;
+}
+.revisao-header{display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem;}
+.revisao-qnum{font-size:12px;font-weight:600;color:var(--c4);letter-spacing:.3px;}
+.revisao-pont-display{
+  margin-left:auto;font-size:20px;font-weight:700;
+  color:var(--c1);letter-spacing:-.3px;font-variant-numeric:tabular-nums;
+  min-width:40px;text-align:right;
+}
+.revisao-pergunta{font-size:15px;color:var(--c1);line-height:1.65;margin-bottom:1.25rem;font-weight:400;}
+.revisao-cols{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.25rem;}
+.revisao-col{}
+.revisao-col-label{font-size:11px;font-weight:600;color:var(--c4);letter-spacing:.4px;text-transform:uppercase;margin-bottom:.5rem;}
+.revisao-col-text{
+  font-size:13px;color:var(--c2);line-height:1.7;
+  background:var(--bg-deep);border-radius:10px;padding:12px 14px;min-height:60px;
+}
+.gabarito-col{background:rgba(46,204,113,.06);border:1px solid rgba(46,204,113,.15);}
+/* Highlight de pontuação no gabarito */
+.pont-badge{
+  display:inline-block;background:rgba(46,204,113,.2);color:var(--green);
+  border:1px solid rgba(46,204,113,.3);border-radius:5px;
+  padding:1px 6px;font-size:11px;font-weight:700;font-family:monospace;
+  margin:0 1px;
+}
+.revisao-pont-row{
+  display:flex;align-items:center;gap:.75rem;padding-top:1rem;
+  border-top:1px solid var(--border);
+}
+.pont-input{
+  background:var(--bg-input);border:1.5px solid var(--border);border-radius:8px;
+  color:var(--c1);font-family:'Inter',sans-serif;font-size:15px;font-weight:600;
+  padding:6px 10px;outline:none;text-align:center;transition:border-color .15s;
+}
+.pont-input:focus{border-color:var(--green);}
+.revisao-total-card{
+  background:var(--bg-card);border:2px solid var(--border-m);border-radius:16px;
+  padding:2rem;text-align:center;margin-top:2rem;
+}
+.revisao-total-label{font-size:12px;font-weight:600;color:var(--c4);letter-spacing:.4px;text-transform:uppercase;margin-bottom:.5rem;}
+.revisao-total-num{font-size:56px;font-weight:700;letter-spacing:-1px;transition:color .3s;font-variant-numeric:tabular-nums;}
+.revisao-total-sub{font-size:13px;color:var(--c4);margin-top:4px;}
+
+/* ── PROVA REAL ALERTA ──────────────────── */
+#prova-alerta{
+  position:fixed;bottom:5rem;left:50%;transform:translateX(-50%);z-index:400;
+  background:rgba(255,159,10,.12);backdrop-filter:blur(20px);
+  border:1.5px solid rgba(255,159,10,.4);border-radius:16px;
+  padding:1.25rem 1.75rem;display:flex;align-items:center;gap:1.25rem;
+  box-shadow:0 8px 32px rgba(255,159,10,.15);
+  animation:slideUpAlert .4s cubic-bezier(.4,0,.2,1) both;
+  max-width:480px;width:90%;
+}
+@keyframes slideUpAlert{from{opacity:0;transform:translateX(-50%) translateY(20px);}to{opacity:1;transform:translateX(-50%) translateY(0);}}
+#prova-alerta .alerta-icon{font-size:28px;flex-shrink:0;}
+#prova-alerta .alerta-texto{flex:1;}
+#prova-alerta .alerta-titulo{font-size:14px;font-weight:700;color:#ff9f0a;margin-bottom:3px;}
+#prova-alerta .alerta-sub{font-size:12px;color:var(--c3);}
+#prova-alerta .alerta-btn{
+  background:#ff9f0a;border:none;color:#000;
+  font-family:'Inter',sans-serif;font-size:13px;font-weight:700;
+  padding:8px 18px;border-radius:8px;cursor:pointer;white-space:nowrap;
+  transition:background .15s;flex-shrink:0;
+}
+#prova-alerta .alerta-btn:hover{background:#ffb340;}
+
+
+/* ── EDITOR DE GABARITO ─────────────────── */
+.gab-editor-wrap{border:1.5px solid var(--border);border-radius:var(--r-sm);overflow:hidden;}
+.gab-toolbar{
+  display:flex;gap:4px;padding:8px 10px;
+  background:var(--bg-deep);border-bottom:1px solid var(--border);
+  flex-wrap:wrap;align-items:center;
+}
+.gab-toolbar-label{font-size:11px;color:var(--c4);margin-right:4px;font-weight:500;}
+.gab-pont-btn{
+  font-size:11px;font-weight:700;padding:3px 10px;border-radius:5px;border:none;
+  cursor:pointer;transition:all .15s;
+  background:rgba(46,204,113,.15);color:var(--green);border:1px solid rgba(46,204,113,.25);
+}
+.gab-pont-btn:hover{background:rgba(46,204,113,.3);}
+.gab-clear-btn{
+  font-size:11px;padding:3px 10px;border-radius:5px;
+  background:rgba(255,69,58,.1);color:#ff453a;border:1px solid rgba(255,69,58,.2);
+  cursor:pointer;margin-left:auto;
+}
+.gab-clear-btn:hover{background:rgba(255,69,58,.2);}
+.gab-editor{
+  min-height:120px;padding:12px 14px;
+  font-size:14px;line-height:1.75;color:var(--c1);
+  outline:none;background:var(--bg-input);
+  white-space:pre-wrap;word-break:break-word;
+}
+.gab-editor:empty::before{content:attr(data-placeholder);color:var(--c5);pointer-events:none;}
+/* pont-badge já definido no CSS geral */
+
+@media(max-width:768px){
+  .revisao-cols{grid-template-columns:1fr;}
+}
+@media(max-width:768px){
+  .bento-grid{grid-template-columns:1fr;}
+  .stats-bento{grid-template-columns:1fr 1fr;}
+  .result-stats{grid-template-columns:1fr 1fr;}
+  #header{padding:0 1.25rem;}
+  #header-nav{display:none;}
+  #home-screen,#simulado-screen,#admin-screen{padding:1.5rem 1.25rem;}
+  .hero-title{font-size:30px;}
+}
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div id="logo-area">
+    <div id="logo-mark"><img src="https://i.imgur.com/gjSYhuy.png" alt="CEQM" style="width:32px;height:32px;object-fit:contain;image-rendering:auto;filter:brightness(1.1);"></div>
+    <div id="logo-text">
+      <div id="logo-title">CEQM</div>
+      <div id="logo-sub">Centro Estratégico de Qualificação Militar</div>
+    </div>
+  </div>
+  <nav id="header-nav" class="hidden">
+    <button class="nav-btn active" onclick="showScreen('home')">Início</button>
+    <button class="nav-btn" onclick="startSimulado('treino')">Treino</button>
+    <button class="nav-btn" id="real-nav-btn" onclick="tentarReal()">Simulado Real</button>
+    <button class="nav-btn" onclick="showScreen('hall')">Hall do CQ</button>
+    <button class="nav-btn admin-btn hidden" id="admin-nav-btn" onclick="showScreen('admin')">Admin</button>
+  </nav>
+  <div id="avatar-area" class="hidden">
+    <div id="nick-display">
+      <small>Conectado como</small>
+      <span id="nick-name">—</span>
+    </div>
+    <img id="avatar-img" src="" alt="avatar" onerror="this.src='data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='"/>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- AUTH -->
+<div id="auth-screen">
+  <div class="auth-logo-mark stagger-1" style="background:transparent;box-shadow:none;"><img src="https://i.imgur.com/gjSYhuy.png" alt="CEQM" style="width:56px;height:56px;object-fit:contain;filter:brightness(1.1);"></div>
+  <div class="auth-title stagger-2">CEQM</div>
+  <div class="auth-sub stagger-3">Centro Estratégico de Qualificação Militar</div>
+  <div class="auth-card">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:1.25rem;padding:10px 14px;background:var(--green-dim);border:1px solid var(--green-border);border-radius:var(--r-sm);">
+      <div style="width:28px;height:28px;border-radius:50%;background:var(--green-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      </div>
+      <div style="font-size:11px;color:var(--c3);line-height:1.5;">Plataforma de estudos para a <span style="color:var(--green);font-weight:600;">AQOI</span><br><span style="color:var(--c4);">Aberto para todos os patentes — do aspirante ao general</span></div>
+    </div>
+    <div class="auth-status" id="auth-status-row">
+      <div class="pulse-dot" id="status-dot"></div>
+      <div id="status-text">Verificando sessão do fórum...</div>
+    </div>
+    <div class="auth-log" id="auth-log"></div>
+    <div id="auth-denied" class="hidden">Acesso negado. Você precisa estar autenticado no fórum com uma conta válida e autorizada.</div>
+    <button class="btn-primary hidden" id="btn-entrar" onclick="entrarNoSistema()">Continuar</button>
+  </div>
+</div>
+
+<!-- HOME -->
+<div id="home-screen" class="hidden">
+  <div class="hero-section stagger-1">
+    <div class="hero-greeting" id="hero-greeting">Bem-vindo de volta</div>
+    <div class="hero-title">
+      Pronto para<br>
+      <span class="typewriter" id="typewriter-text"></span>
+    </div>
+    <div class="hero-sub">Escolha uma modalidade e comece a praticar os códigos militares.</div>
+  </div>
+
+  <div class="bento-grid">
+    <div class="bento-card stagger-2" onclick="startSimulado('treino')">
+      <div class="bento-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      </div>
+      <div class="bento-title">Simulado Treino</div>
+      <div class="bento-desc">Pratique com perguntas dissertativas dos códigos militares. Gabarito exibido após cada resposta para autoavaliação e acompanhamento.</div>
+      <div class="bento-badge badge-treino"><span class="dot-badge dot-treino"></span>Disponível sempre</div>
+    </div>
+    <div class="bento-card real-card stagger-3" id="real-mode-card" onclick="tentarReal()">
+      <div class="bento-icon gold">
+        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      </div>
+      <div class="bento-title">Simulado Real</div>
+      <div class="bento-desc" id="real-desc">Simulado oficial liberado pela administração. Suas respostas serão avaliadas e corrigidas pela Deusa.</div>
+      <div class="bento-badge badge-locked" id="real-badge"><span class="dot-badge dot-locked"></span>Bloqueado</div>
+    </div>
+  </div>
+
+  <div class="stats-bento">
+    <div class="stat-card stagger-2">
+      <div class="stat-label"><span class="stat-label-dot" style="background:var(--green);"></span>Treinos realizados</div>
+      <div class="stat-num shimmer-active" id="stat-treinos">—</div>
+    </div>
+    <div class="stat-card stagger-3">
+      <div class="stat-label"><span class="stat-label-dot" style="background:#0a84ff;"></span>Taxa de acertos</div>
+      <div class="stat-num shimmer-active" id="stat-acertos">—</div>
+    </div>
+    <div class="stat-card stagger-4">
+      <div class="stat-label"><span class="stat-label-dot" style="background:#ff9f0a;"></span>Simulados reais</div>
+      <div class="stat-num shimmer-active" id="stat-reais">—</div>
+    </div>
+    <div class="stat-card stagger-5">
+      <div class="stat-label"><span class="stat-label-dot" style="background:#bf5af2;"></span>Última nota real</div>
+      <div class="stat-num shimmer-active" id="stat-nota">—</div>
+    </div>
+  </div>
+</div>
+
+<!-- SIMULADO -->
+<div id="simulado-screen" class="hidden fade-screen">
+  <div class="sim-header">
+    <button class="back-btn" onclick="confirmBack()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>Voltar
+    </button>
+    <div class="sim-title" id="sim-title">Simulado Treino</div>
+    <div class="sim-badge treino" id="sim-badge">Treino</div>
+    <div class="q-counter">Pergunta <span id="q-current">1</span> de <span id="q-total">10</span></div>
+  </div>
+  <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progress-fill" style="width:10%;"></div></div>
+  <div id="question-area"></div>
+</div>
+
+<!-- RESULT -->
+<div id="result-screen" class="hidden">
+  <div class="result-screen">
+    <div class="result-check">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <div class="result-title" id="result-title">Concluído</div>
+    <div class="result-sub" id="result-sub">Treino finalizado e registrado no sistema.</div>
+    <div class="result-stats" id="result-stats"></div>
+    <div class="result-actions">
+      <button class="btn-confirm" onclick="startSimulado('treino')">Novo treino</button>
+      <button class="btn-secondary" onclick="showScreen('home')">Voltar ao início</button>
+    </div>
+  </div>
+</div>
+
+<!-- HALL DO CQ -->
+<div id="hall-screen" class="hidden fade-screen">
+  <div class="hero-section stagger-1" style="margin-bottom:1.5rem;">
+    <div class="hero-greeting">Certificados</div>
+    <div class="hero-title" style="font-size:32px;">Hall do CQ</div>
+    <div class="hero-sub">Todos que conquistaram o Certificado de Qualificação de Oficiais Intermediários pelo CEQM.</div>
+  </div>
+
+  <div class="hall-admin-bar stagger-2">
+    <div class="hall-filter" id="hall-filter"></div>
+    <div style="display:flex;gap:.5rem;flex-shrink:0;">
+      <button class="btn-sm hidden" id="btn-export-cq" onclick="exportarJSON()" title="Exportar JSON">↓ Exportar</button>
+      <button class="btn-sm hidden" id="btn-import-cq" onclick="document.getElementById('input-json-upload').click()" title="Importar JSON">↑ Importar</button>
+      <button class="btn-sm dark hidden" id="btn-add-cq" onclick="abrirAddCQ()">+ Adicionar</button>
+      <input type="file" id="input-json-upload" accept=".json" class="hidden" onchange="importarJSON(event)">
+    </div>
+  </div>
+
+  <div class="hall-count stagger-2" id="hall-count"></div>
+  <div class="hall-grid" id="hall-grid"></div>
+</div>
+
+<!-- ADMIN -->
+<div id="admin-screen" class="hidden fade-screen">
+  <div class="hero-section stagger-1" style="margin-bottom:2rem;">
+    <div class="hero-greeting">Painel</div>
+    <div class="hero-title" style="font-size:32px;">Administração</div>
+  </div>
+  <div class="admin-tabs">
+    <button class="admin-tab active" onclick="switchAdminTab('controle')">Controle</button>
+    <button class="admin-tab" onclick="switchAdminTab('simulado-real')">Simulado Real</button>
+    <button class="admin-tab" onclick="switchAdminTab('correcoes')">Correções</button>
+    <button class="admin-tab" onclick="switchAdminTab('perguntas')">Perguntas Treino</button>
+    <button class="admin-tab" onclick="switchAdminTab('membros')">Membros</button>
+  </div>
+  <div class="admin-content stagger-2">
+    <div id="tab-controle">
+      <div class="control-row">
+        <div><div class="control-label">Simulado Real</div><div class="control-sub">Libera ou bloqueia o acesso para todos os membros</div></div>
+        <div class="toggle-switch" id="toggle-real" onclick="toggleSimuladoReal()"></div>
+      </div>
+      <div class="control-row">
+        <div><div class="control-label">Configuração de Perguntas</div><div class="control-sub">Quantidade e tempo por documento</div></div>
+        <button class="btn-sm" onclick="openConfigModal()">Editar</button>
+      </div>
+      <div class="divider"></div>
+      <div class="section-label">Configuração Atual</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;" id="config-display"></div>
+    </div>
+    <!-- SIMULADO REAL TAB -->
+    <div id="tab-simulado-real" class="hidden">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;">
+        <div>
+          <div style="font-size:16px;font-weight:600;color:var(--c1);margin-bottom:3px;">Gestão do Simulado Real</div>
+          <div style="font-size:12px;color:var(--c4);">Crie as perguntas, libere a prova e corrija as respostas.</div>
+        </div>
+        <div style="display:flex;gap:.5rem;align-items:center;">
+          <div id="sr-status-badge" class="bento-badge badge-locked" style="white-space:nowrap;"><span class="dot-badge dot-locked"></span>Bloqueado</div>
+          <button class="btn-sm dark" id="btn-toggle-sr" onclick="toggleSimuladoReal()">Liberar prova</button>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;">
+        <div class="section-label" style="margin:0;">Perguntas da prova (<span id="sr-q-count">0</span>/10)</div>
+        <button class="btn-sm dark" onclick="abrirAddPerguntaReal()">+ Nova pergunta</button>
+      </div>
+      <div id="sr-perguntas-lista" style="display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.5rem;min-height:48px;"></div>
+      <div class="divider"></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;">
+        <div class="section-label" style="margin:0;">Respostas para correção</div>
+        <button class="btn-sm" onclick="loadCorrecoesReal()">↺ Atualizar</button>
+      </div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Nick</th><th>Questão</th><th>Resposta</th><th>Nota</th><th>Comentário</th><th></th></tr></thead>
+        <tbody id="sr-correcoes-body"></tbody>
+      </table></div>
+    </div>
+
+    <div id="tab-correcoes" class="hidden">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+        <div class="section-label" style="margin:0;">Respostas do Simulado Real</div>
+        <button class="btn-sm" onclick="loadCorrecoes()">Atualizar</button>
+      </div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Nick</th><th>Pergunta</th><th>Resposta</th><th>Nota</th><th></th></tr></thead>
+        <tbody id="correcoes-body"></tbody>
+      </table></div>
+    </div>
+    <div id="tab-perguntas" class="hidden">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+        <div class="section-label" style="margin:0;">Banco de Perguntas</div>
+        <div style="display:flex;gap:.5rem;align-items:center;">
+          <select id="filter-tipo-q" class="modal-input" style="width:120px;padding:5px 30px 5px 10px;font-size:12px;" onchange="filterPerguntas()">
+            <option value="">Todos</option><option value="treino">Treino</option><option value="real">Real</option>
+          </select>
+          <button class="btn-sm dark" onclick="openAddPerguntaModal()">+ Nova</button>
+        </div>
+      </div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Doc</th><th>Tipo</th><th>Pergunta</th><th>Tempo</th><th></th></tr></thead>
+        <tbody id="perguntas-body"></tbody>
+      </table></div>
+    </div>
+    <div id="tab-membros" class="hidden">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+        <div class="section-label" style="margin:0;">Membros Autorizados</div>
+        <button class="btn-sm dark" onclick="openAddMembroModal()">+ Adicionar</button>
+      </div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Nick</th><th>Cargo</th><th>Acesso</th><th></th></tr></thead>
+        <tbody id="membros-body"></tbody>
+      </table></div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<div id="modal-overlay" onclick="closeModalOutside(event)">
+  <div class="modal" id="modal-content"></div>
+</div>
+<div id="toast"></div>
+
+<script>
+// ── TYPEWRITER ───────────────────────────
+function runTypewriter(el, words, speed=80, pause=2200) {
+  let wi=0,ci=0,deleting=false;
+  function tick(){
+    const word=words[wi];
+    el.textContent=deleting?word.slice(0,ci--):word.slice(0,ci++);
+    if(!deleting&&ci>word.length){setTimeout(()=>{deleting=true;tick();},pause);return;}
+    if(deleting&&ci<0){deleting=false;wi=(wi+1)%words.length;ci=0;}
+    setTimeout(tick,deleting?40:speed);
+  }
+  tick();
+}
+
+// ── HOVER GLOW on bento cards ────────────
+document.querySelectorAll('.bento-card').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    card.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
+    card.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');
+  });
+});
+
+// ── ANIMATED COUNTER ─────────────────────
+function animateCounter(el, target, suffix='', duration=1200) {
+  if(target==='—'||target===null||target===undefined){el.textContent='—';el.classList.remove('shimmer-active');return;}
+  const num=parseFloat(String(target).replace(/[^0-9.]/g,''));
+  if(isNaN(num)){el.textContent=target;el.classList.remove('shimmer-active');return;}
+  el.classList.remove('shimmer-active');
+  const start=performance.now();
+  function step(now){
+    const p=Math.min((now-start)/duration,1);
+    const ease=1-Math.pow(1-p,3);
+    const cur=Math.round(ease*num);
+    el.textContent=cur+(suffix||'');
+    if(p<1)requestAnimationFrame(step);
+    else el.textContent=target;
+  }
+  requestAnimationFrame(step);
+}
+</script>
+
+<div id="prova-alerta" style="display:none;">
+  <div class="alerta-icon">📋</div>
+  <div class="alerta-texto">
+    <div class="alerta-titulo">Simulado Real disponível!</div>
+    <div class="alerta-sub">A prova foi liberada. Você tem 1 única tentativa.</div>
+  </div>
+  <button class="alerta-btn" onclick="fecharAlerta();tentarReal()">Iniciar agora</button>
+</div>
+
+<script>
+// Polling a cada 30s para detectar liberação do simulado real
+let _provaJaAlertada = false;
+function fecharAlerta() {
+  document.getElementById('prova-alerta').style.display = 'none';
+  _provaJaAlertada = true;
+}
+setInterval(async () => {
+  if (_provaJaAlertada || !state?.nick) return;
+  try {
+    const data = await apiGet('config');
+    const eraAtivo = state.config.simulado_real_ativo;
+    state.config.simulado_real_ativo = data.simulado_real_ativo;
+    // Só alerta se acabou de ser liberado
+    if (!eraAtivo && data.simulado_real_ativo) {
+      updateRealMode();
+      document.getElementById('prova-alerta').style.display = 'flex';
+    }
+    if (!data.simulado_real_ativo) {
+      document.getElementById('prova-alerta').style.display = 'none';
+      updateRealMode();
+    }
+  } catch(e) {}
+}, 30000);
+</script>
+
+<script src="simulado-rcc-script.js"></script>
+</body>
+</html>
