@@ -162,9 +162,7 @@ async function initAuth() {
 
   document.getElementById('status-dot').classList.add('ok');
   document.getElementById('status-text').textContent = 'Verificado — ' + state.nick;
-  const btn = document.getElementById('btn-entrar');
-  btn.classList.remove('hidden');
-  btn.textContent = 'Entrar como ' + state.nick;
+  setTimeout(() => entrarNoSistema(), 800);
 }
 
 function entrarNoSistema() {
