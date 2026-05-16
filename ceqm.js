@@ -925,7 +925,10 @@ async function loadPerguntasAdmin() {
 
 function filterPerguntas() {
   const tipo=document.getElementById('filter-tipo-q')?.value||'';
-  const lista=tipo?state.perguntasAdmin.filter(q=>q.tipo===tipo):state.perguntasAdmin;
+  const lista = (tipo
+    ? state.perguntasAdmin.filter(q => q.tipo === tipo)
+    : state.perguntasAdmin
+  ).filter(q => String(q.ativo).toLowerCase() !== 'false');
   const tbody=document.getElementById('perguntas-body');
   const docClass=(d)=>({'CCM':'doc-ccm','CPM':'doc-cpm','PCE':'doc-pce','CCB':'doc-ccb'}[d]||'doc-ccm');
   if(!lista.length){tbody.innerHTML='<tr><td colspan="5" style="text-align:center;color:var(--c4);padding:2rem;">Nenhuma pergunta</td></tr>';return;}
@@ -1806,7 +1809,7 @@ let srPerguntas = []; // perguntas do simulado real (admin)
 function loadSimuladoRealAdmin() {
   atualizarBadgeSR();
   apiGet('todas_perguntas').then(data => {
-    srPerguntas = (data.perguntas || []).filter(q => q.tipo === 'real');
+    srPerguntas = (data.perguntas || []).filter(q => q.tipo === 'real' && String(q.ativo).toLowerCase() !== 'false');
     renderSRPerguntas();
   }).catch(() => renderSRPerguntas());
   loadCorrecoesReal();
