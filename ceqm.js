@@ -1381,6 +1381,15 @@ async function abrirPerfil(nick, telaAnterior='home') {
     </div>
   </div>`;
 
+    if (window.innerWidth <= 768) {
+      const grid = container.querySelector('[style*="1.2fr"]');
+      if (grid) grid.style.gridTemplateColumns = '1fr';
+      const bannerNick = container.querySelector('[style*="left:200px"]');
+      if (bannerNick) { bannerNick.style.left = '1rem'; bannerNick.style.right = '1rem'; }
+      const avatarRow = container.querySelector('[style*="margin-top:-56px"]');
+      if (avatarRow) { avatarRow.style.flexDirection = 'column'; avatarRow.style.alignItems = 'center'; }
+    }
+
   } catch(e) {
     container.innerHTML = '<div style="text-align:center;padding:3rem;color:var(--c4);">Erro ao carregar perfil.</div>';
   }
