@@ -935,7 +935,10 @@ function filterPerguntas() {
       <td><span class="nota-badge ${q.tipo==='real'?'nota-pendente':'nota-corrigido'}">${q.tipo||'treino'}</span></td>
       <td style="max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--c3);font-size:13px;" title="${q.pergunta}">${q.pergunta}</td>
       <td style="font-size:13px;color:var(--c4);">${q.tempo||q.tempo_s||'—'}s</td>
-      <td><button class="btn-sm" onclick="editarPergunta(${i})">Editar</button></td>
+      <td style="display:flex;gap:4px;">
+       <button class="btn-sm" onclick="editarPergunta(${i})">Editar</button>
+       <button class="btn-sm" style="color:#ff9f0a;" title="Mover para Real" onclick="moverPergunta(${i},'treino','real')">⇄ Real</button>
+      </td>
     </tr>
   `).join('');
 }
@@ -1813,7 +1816,19 @@ function renderSRPerguntas() {
   const lista = document.getElementById('sr-perguntas-lista');
   const count = document.getElementById('sr-q-count');
   if (!lista) return;
-  if (count) count.textContent = srPerguntas.length;
+  const limite = 10;
+  const sobre = srPerguntas.length > limite;
+  if (count) {
+    count.textContent = srPerguntas.length;
+    count.style.color = sobre ? '#ff9f0a' : ''; 
+  }
+// Desabilita o botão se já tem 10+
+  const btnAdd = document.querySelector('[onclick="abrirAddPerguntaReal()"]');
+  if (btnAdd) {
+    btnAdd.disabled = srPerguntas.length >= limite;
+    btnAdd.style.opacity = srPerguntas.length >= limite ? '.4' : '';
+    btnAdd.title = srPerguntas.length >= limite ? 'Limite de 10 perguntas atingido' : '';
+  }
 
   if (!srPerguntas.length) {
     lista.innerHTML = `<div style="text-align:center;padding:1.5rem;color:var(--c4);font-size:13px;border:1px dashed var(--border);border-radius:10px;">Nenhuma pergunta criada. Clique em "+ Nova pergunta" para começar.</div>`;
@@ -1828,6 +1843,7 @@ function renderSRPerguntas() {
       <span style="font-size:13px;color:var(--c2);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${q.pergunta}</span>
       <span style="font-size:11px;color:var(--c4);flex-shrink:0;">${Math.floor((q.tempo||120)/60)}:${String((q.tempo||120)%60).padStart(2,'0')} min</span>
       <button class="btn-sm" onclick="editarPerguntaReal(${i})">✎</button>
+      <button class="btn-sm" style="color:#4c9eff;" title="Mover para Treino" onclick="moverPergunta(${i},'real','treino')">⇄ Treino</button>
       <button class="btn-sm" style="color:#ff453a;" onclick="removerPerguntaReal(${i})">✕</button>
     </div>
   `).join('');
@@ -1887,7 +1903,9 @@ function removerPerguntaReal(idx) {
   const q = srPerguntas[idx];
   srPerguntas.splice(idx, 1);
   renderSRPerguntas();
-  if (q?.id) apiPost('salvar_pergunta', { ...q, tipo: 'real', admin_nick: state.nick }).catch(()=>{});
+  if (q?.id) {
+    apiPost('salvar_pergunta', { ...q, tipo: 'real', ativo: 'false', admin_nick: state.nick }).catch(()=>{});
+  }
 }
 
 function salvarPerguntaReal(idx) {
@@ -2237,4 +2255,24 @@ async function resetarPasseIndividual(nick) {
   if (!confirm(`Resetar o passe de ${nick}?`)) return;
   try { await apiPost('resetar_passe_nick', { nick, admin_nick: state.nick }); showToast(`Passe de ${nick} resetado!`); loadPassesAdmin(); }
   catch(e) { showToast('Erro ao resetar.', 'error'); }
+}
+
+async function moverPergunta(idx, de, para) {
+  if (para === 'real' && srPerguntas.length >= 10) {
+    showToast('Limite de 10 perguntas no simulado real.', 'error');
+    return;
+  }
+  const q = de === 'treino' ? state.perguntasAdmin[idx] : srPerguntas[idx];
+  if (!q) return;
+  if (!confirm(`Mover "${q.pergunta.slice(0,60)}..." para ${para === 'real' ? 'Simulado Real' : 'Treino'}?`)) return;
+  try {
+    await apiPost('salvar_pergunta', { ...q, tipo: para, admin_nick: state.nick });
+    // Inativa no banco original
+    if (q.id) await apiPost('salvar_pergunta', { ...q, tipo: de, ativo: 'false', admin_nick: state.nick });
+    showToast(`Pergunta movida para ${para === 'real' ? 'Real' : 'Treino'}!`, 'success');
+    loadPerguntasAdmin();
+    loadSimuladoRealAdmin();
+  } catch(e) {
+    showToast('Erro ao mover.', 'error');
+  }
 }
