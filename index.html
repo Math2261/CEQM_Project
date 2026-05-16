@@ -4,6 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>CEQM · Simulados</title>
+<link rel="icon" type="image/png" href="https://i.imgur.com/gjSYhuy.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
@@ -31,10 +32,10 @@
   --green-dim: rgba(46,204,113,.15);
   --green-border: rgba(46,204,113,.25);
 }
- 
+
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{width:100%;min-height:100vh;background:var(--bg);color:var(--c1);font-family:'Inter',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
- 
+
 /* ── HEADER ─────────────────────────────── */
 #header{
   position:fixed;top:0;left:0;right:0;z-index:100;
@@ -60,10 +61,10 @@ html,body{width:100%;min-height:100vh;background:var(--bg);color:var(--c1);font-
 #nick-display small{display:block;font-size:10px;color:var(--c4);}
 #nick-display span{display:block;font-size:13px;font-weight:500;color:var(--c1);letter-spacing:-.2px;}
 #avatar-img{width:30px;height:30px;border-radius:50%;background:var(--bg-deep);image-rendering:pixelated;border:1.5px solid var(--border-m);}
- 
+
 /* ── MAIN ───────────────────────────────── */
 #main{padding-top:68px;min-height:100vh;}
- 
+
 /* ── ANIMATIONS ─────────────────────────── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
@@ -76,14 +77,14 @@ html,body{width:100%;min-height:100vh;background:var(--bg);color:var(--c1);font-
 @keyframes modalIn{from{opacity:0;transform:scale(.96) translateY(8px);}to{opacity:1;transform:scale(1) translateY(0);}}
 @keyframes pulse{0%,100%{opacity:.3;transform:scale(.7);}50%{opacity:1;transform:scale(1);}}
 @keyframes blink2{0%,100%{opacity:1;}50%{opacity:.3;}}
- 
+
 .stagger-1{animation:fadeUp .5s cubic-bezier(.4,0,.2,1) .05s both;}
 .stagger-2{animation:fadeUp .5s cubic-bezier(.4,0,.2,1) .12s both;}
 .stagger-3{animation:fadeUp .5s cubic-bezier(.4,0,.2,1) .19s both;}
 .stagger-4{animation:fadeUp .5s cubic-bezier(.4,0,.2,1) .26s both;}
 .stagger-5{animation:fadeUp .5s cubic-bezier(.4,0,.2,1) .33s both;}
 .fade-screen{animation:fadeIn .3s ease both;}
- 
+
 /* ── AUTH ───────────────────────────────── */
 #auth-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:2rem;text-align:center;}
 .auth-logo-mark{width:80px;height:80px;border-radius:0;background:transparent;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;box-shadow:none;}
@@ -102,17 +103,17 @@ html,body{width:100%;min-height:100vh;background:var(--bg);color:var(--c1);font-
 .btn-primary{width:100%;padding:12px;background:var(--c1);border:none;color:#000;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;letter-spacing:-.2px;border-radius:var(--r-sm);cursor:pointer;transition:all .2s;margin-top:1.25rem;}
 .btn-primary:hover{background:var(--c2);transform:scale(1.01);}
 .btn-primary:disabled{opacity:.35;cursor:not-allowed;transform:none;}
- 
+
 /* ── HOME ───────────────────────────────── */
 #home-screen{padding:2.5rem 3rem;max-width:1280px;margin:0 auto;}
- 
+
 /* Hero */
 .hero-section{margin-bottom:3rem;}
 .hero-greeting{font-size:13px;font-weight:500;color:var(--c4);letter-spacing:.5px;text-transform:uppercase;margin-bottom:.5rem;}
 .hero-title{font-size:42px;font-weight:700;color:var(--c1);letter-spacing:-.8px;line-height:1.1;margin-bottom:.75rem;}.hero-title .typewriter{color:var(--green);border-right-color:var(--green);}
 .hero-title .typewriter{display:inline-block;overflow:hidden;white-space:nowrap;border-right:2px solid var(--c3);vertical-align:bottom;}
 .hero-sub{font-size:16px;color:var(--c3);font-weight:400;max-width:480px;}
- 
+
 /* Bento grid */
 .bento-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:1.25rem;margin-bottom:2rem;}
 .bento-card{
@@ -153,7 +154,7 @@ html,body{width:100%;min-height:100vh;background:var(--bg);color:var(--c1);font-
 .dot-treino{background:var(--green);}
 .dot-locked{background:#ff453a;border-radius:50%;}
 .dot-open{background:#ff9f0a;animation:pulse 1.4s infinite;}
- 
+
 /* Stats bento */
 .stats-bento{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;}
 .stat-card{
@@ -169,7 +170,7 @@ html,body{width:100%;min-height:100vh;background:var(--bg);color:var(--c1);font-
   background-size:200% 100%;animation:shimmer 1.5s infinite;
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
- 
+
 /* ── SIMULADO ───────────────────────────── */
 #simulado-screen{padding:2rem 3rem;max-width:900px;margin:0 auto;}
 .sim-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.75rem;}
@@ -180,10 +181,10 @@ html,body{width:100%;min-height:100vh;background:var(--bg);color:var(--c1);font-
 .sim-badge.treino{background:rgba(48,209,88,.1);color:#30d158;border:1px solid rgba(48,209,88,.2);}
 .sim-badge.real{background:rgba(255,159,10,.1);color:#ff9f0a;border:1px solid rgba(255,159,10,.2);}
 .q-counter{margin-left:auto;font-size:13px;color:var(--c4);}
- 
+
 .progress-bar-wrap{height:3px;background:rgba(255,255,255,.08);border-radius:99px;margin-bottom:2rem;overflow:hidden;}
 .progress-bar-fill{height:100%;background:var(--c1);transition:width .6s cubic-bezier(.4,0,.2,1);border-radius:99px;}
- 
+
 .question-card{background:var(--bg-card);border:1px solid var(--border);border-radius:18px;padding:2.5rem;box-shadow:0 4px 24px rgba(0,0,0,.2);animation:fadeUp .35s both;}
 .q-meta{display:flex;align-items:center;gap:10px;margin-bottom:1.75rem;}
 .q-num{font-size:11px;font-weight:700;color:var(--c5);letter-spacing:1px;font-variant-numeric:tabular-nums;}
@@ -205,7 +206,7 @@ html,body{width:100%;min-height:100vh;background:var(--bg);color:var(--c1);font-
 .btn-secondary:hover{background:rgba(255,255,255,.1);}
 .btn-confirm{background:var(--c1);border:none;color:#000;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;padding:9px 22px;border-radius:10px;cursor:pointer;transition:all .15s;}
 .btn-confirm:hover{background:var(--c2);transform:scale(1.02);}
- 
+
 .gabarito-card{background:rgba(48,209,88,.05);border:1.5px solid rgba(48,209,88,.15);border-left:3px solid #30d158;border-radius:12px;padding:1.5rem;margin-top:1.75rem;animation:fadeUp .3s both;}
 .gabarito-title{font-size:11px;font-weight:600;color:rgba(48,209,88,.7);letter-spacing:.5px;text-transform:uppercase;margin-bottom:.75rem;}
 .gabarito-text{font-size:14px;line-height:1.7;color:var(--c2);font-style:italic;}
@@ -217,7 +218,7 @@ html,body{width:100%;min-height:100vh;background:var(--bg);color:var(--c1);font-
 .aval-parcial:hover,.aval-parcial.selected{background:rgba(255,159,10,.2);border-color:#ff9f0a;}
 .aval-errei{background:rgba(255,69,58,.08);border-color:rgba(255,69,58,.15);color:#ff453a;}
 .aval-errei:hover,.aval-errei.selected{background:rgba(255,69,58,.2);border-color:#ff453a;}
- 
+
 /* ── RESULT ─────────────────────────────── */
 .result-screen{text-align:center;padding:5rem 2rem;animation:fadeUp .4s both;}
 .result-check{width:80px;height:80px;border-radius:50%;background:rgba(48,209,88,.15);border:1.5px solid rgba(48,209,88,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 2rem;}
@@ -232,7 +233,7 @@ html,body{width:100%;min-height:100vh;background:var(--bg);color:var(--c1);font-
 .result-stat-n.errei{color:#ff453a;}
 .result-stat-l{font-size:12px;color:var(--c4);margin-top:4px;}
 .result-actions{display:flex;gap:.75rem;justify-content:center;}
- 
+
 /* ── ADMIN ──────────────────────────────── */
 #admin-screen{padding:2rem 3rem;max-width:1200px;margin:0 auto;}
 .admin-tabs{display:flex;gap:2px;margin-bottom:1.5rem;background:rgba(255,255,255,.05);padding:3px;border-radius:12px;width:fit-content;}
@@ -262,7 +263,7 @@ tr:hover td{background:rgba(255,255,255,.03);}
 .btn-sm.dark:hover{background:var(--c2);}
 .btn-corrigir{background:rgba(255,255,255,.06);border:1px solid var(--border);color:var(--c2);font-family:'Inter',sans-serif;font-size:12px;font-weight:500;padding:5px 12px;border-radius:var(--r-xs);cursor:pointer;transition:all .15s;}
 .btn-corrigir:hover{background:rgba(255,255,255,.1);}
- 
+
 /* ── MODAL ──────────────────────────────── */
 #modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;display:none;align-items:center;justify-content:center;backdrop-filter:blur(8px);}
 #modal-overlay.open{display:flex;}
@@ -280,11 +281,11 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
 .btn-cancel:hover{background:rgba(255,255,255,.05);}
 .btn-save{background:var(--c1);border:none;color:#000;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;padding:9px 22px;border-radius:var(--r-sm);cursor:pointer;transition:all .15s;}
 .btn-save:hover{background:var(--c2);}
- 
+
 /* ── LOADING ────────────────────────────── */
 .loading-spinner{display:inline-block;width:20px;height:20px;border:2px solid rgba(255,255,255,.1);border-top-color:var(--c3);border-radius:50%;animation:spin .7s linear infinite;}
 .shimmer-line{height:12px;border-radius:99px;background:linear-gradient(90deg,rgba(255,255,255,.05) 25%,rgba(255,255,255,.1) 50%,rgba(255,255,255,.05) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;}
- 
+
 /* ── TOAST ──────────────────────────────── */
 #toast{position:fixed;bottom:2rem;right:2rem;z-index:300;display:flex;flex-direction:column;gap:.5rem;}
 .toast-item{background:rgba(45,45,47,0.95);backdrop-filter:blur(20px);border:1px solid var(--border-m);border-radius:12px;padding:12px 16px;font-size:13px;color:var(--c1);font-weight:500;animation:toastIn .3s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;gap:10px;min-width:220px;box-shadow:0 8px 32px rgba(0,0,0,.4);}
@@ -292,7 +293,8 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
 .toast-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
 .toast-dot.success{background:var(--ok);}
 .toast-dot.error{background:var(--err);}
- 
+
+
 /* ── HALL DO CQ ─────────────────────────── */
 #hall-screen{padding:2.5rem 3rem;max-width:1280px;margin:0 auto;}
 .hall-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;margin-top:1.5rem;}
@@ -321,10 +323,10 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
 .hall-filter-btn.active{background:var(--green-dim);color:var(--green);border-color:var(--green-border);}
 .hall-count{font-size:13px;color:var(--c4);margin-top:.75rem;}
 .hall-count span{color:var(--green);font-weight:600;}
- 
+
 /* Admin add button */
 .hall-admin-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem;}
- 
+
 /* ── MISC ───────────────────────────────── */
 .hidden{display:none!important;}
 .divider{height:1px;background:var(--border);margin:1.5rem 0;}
@@ -332,8 +334,8 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
 .q-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:.75rem;}
 .form-group label{font-size:11px;font-weight:600;color:var(--c4);letter-spacing:.3px;text-transform:uppercase;display:block;margin-bottom:6px;}
 .resp-text{max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--c4);}
- 
- 
+
+
 /* ── REVISÃO TREINO ─────────────────────── */
 .revisao-card{
   background:var(--bg-card);border:1px solid var(--border);border-radius:16px;
@@ -380,7 +382,7 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
 .revisao-total-label{font-size:12px;font-weight:600;color:var(--c4);letter-spacing:.4px;text-transform:uppercase;margin-bottom:.5rem;}
 .revisao-total-num{font-size:56px;font-weight:700;letter-spacing:-1px;transition:color .3s;font-variant-numeric:tabular-nums;}
 .revisao-total-sub{font-size:13px;color:var(--c4);margin-top:4px;}
- 
+
 /* ── PROVA REAL ALERTA ──────────────────── */
 #prova-alerta{
   position:fixed;bottom:5rem;left:50%;transform:translateX(-50%);z-index:400;
@@ -403,8 +405,8 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
   transition:background .15s;flex-shrink:0;
 }
 #prova-alerta .alerta-btn:hover{background:#ffb340;}
- 
- 
+
+
 /* ── EDITOR DE GABARITO ─────────────────── */
 .gab-editor-wrap{border:1.5px solid var(--border);border-radius:var(--r-sm);overflow:hidden;}
 .gab-toolbar{
@@ -432,24 +434,330 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
   white-space:pre-wrap;word-break:break-word;
 }
 .gab-editor:empty::before{content:attr(data-placeholder);color:var(--c5);pointer-events:none;}
-/* pont-badge já definido no CSS geral */
- 
-@media(max-width:768px){
-  .revisao-cols{grid-template-columns:1fr;}
+/* ── BUTTON ───────────────────── */
+#mob-menu-btn{
+  display:none;
+  background:none;border:none;cursor:pointer;
+  padding:6px;border-radius:8px;
+  color:var(--c3);transition:background .15s,color .15s;
+  -webkit-tap-highlight-color:transparent;
 }
+#mob-menu-btn:hover{background:rgba(255,255,255,.07);color:var(--c1);}
+#mob-menu-btn svg{display:block;width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;}
+
+/* ── DRAWER OVERLAY ─────────────────────── */
+#mob-drawer-overlay{
+  display:none;position:fixed;inset:0;z-index:200;
+  background:rgba(0,0,0,.5);backdrop-filter:blur(4px);
+  opacity:0;transition:opacity .25s;
+}
+#mob-drawer-overlay.open{opacity:1;}
+
+/* ── DRAWER PANEL ───────────────────────── */
+#mob-drawer{
+  position:fixed;top:0;right:0;bottom:0;z-index:201;
+  width:260px;
+  background:var(--bg-card);border-left:1px solid var(--border-m);
+  display:flex;flex-direction:column;
+  transform:translateX(100%);transition:transform .28s cubic-bezier(.4,0,.2,1);
+  padding:0;
+}
+#mob-drawer.open{transform:translateX(0);}
+
+.mob-drawer-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 1.25rem;border-bottom:1px solid var(--border);
+}
+.mob-drawer-title{font-size:14px;font-weight:600;color:var(--c1);letter-spacing:-.2px;}
+.mob-drawer-close{
+  background:none;border:none;color:var(--c4);cursor:pointer;
+  padding:4px;border-radius:6px;transition:all .15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.mob-drawer-close:hover{background:rgba(255,255,255,.07);color:var(--c1);}
+.mob-drawer-close svg{display:block;width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;}
+
+.mob-drawer-nav{flex:1;padding:.75rem .75rem;display:flex;flex-direction:column;gap:2px;overflow-y:auto;}
+.mob-nav-item{
+  display:flex;align-items:center;gap:.875rem;
+  padding:.75rem 1rem;border-radius:10px;
+  background:none;border:none;width:100%;text-align:left;
+  color:var(--c3);font-family:'Inter',sans-serif;font-size:14px;font-weight:500;
+  cursor:pointer;transition:background .15s,color .15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.mob-nav-item:hover,.mob-nav-item.active{background:rgba(255,255,255,.07);color:var(--c1);}
+.mob-nav-item svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+.mob-nav-item.real-item{color:rgba(255,159,10,.8);}
+.mob-nav-item.real-item:hover{color:#ff9f0a;background:rgba(255,159,10,.08);}
+.mob-nav-divider{height:1px;background:var(--border);margin:.5rem 0;}
+
+.mob-drawer-footer{
+  padding:1rem 1.25rem;border-top:1px solid var(--border);
+  display:flex;align-items:center;gap:.75rem;
+}
+.mob-drawer-nick{font-size:13px;font-weight:500;color:var(--c1);}
+.mob-drawer-cargo{font-size:11px;color:var(--c4);margin-top:1px;}
+
+/* ── MOBILE BASE ────────────────────────── */
 @media(max-width:768px){
-  .bento-grid{grid-template-columns:1fr;}
-  .stats-bento{grid-template-columns:1fr 1fr;}
-  .result-stats{grid-template-columns:1fr 1fr;}
-  #header{padding:0 1.25rem;}
-  #header-nav{display:none;}
-  #home-screen,#simulado-screen,#admin-screen{padding:1.5rem 1.25rem;}
+
+  /* Header */
+  #header{padding:0 1rem;height:48px;gap:1rem;}
+  #header-nav{display:none !important;}
+  #logo-sub{display:none;}
+  #mob-menu-btn{display:flex;align-items:center;justify-content:center;margin-left:auto;}
+  #avatar-area{margin-left:0;gap:6px;}
+  #nick-display{display:none;}
+  #avatar-img{width:28px;height:28px;}
+  #mob-drawer-overlay{display:block;}
+
+  /* Main */
+  #main{padding-top:60px;}
+
+  /* ── HOME ─────────────────────────────── */
+  #home-screen{padding:1.5rem 1rem;max-width:100%;}
+  .hero-section{margin-bottom:2rem;}
   .hero-title{font-size:30px;}
+  .hero-sub{font-size:14px;}
+  .bento-grid{grid-template-columns:1fr;gap:.875rem;margin-bottom:1.25rem;}
+  .bento-card{padding:1.5rem;}
+  .bento-title{font-size:19px;}
+  .stats-bento{grid-template-columns:1fr 1fr;gap:.75rem;}
+  .stat-card{padding:1.1rem;}
+  .stat-num{font-size:28px;}
+
+  /* ── SIMULADO ─────────────────────────── */
+  #simulado-screen{padding:.875rem 1rem 0;max-width:100%;}
+  .sim-header{gap:.5rem;margin-bottom:1rem;}
+  .sim-title{font-size:16px;}
+  .back-btn{padding:6px 12px;font-size:12px;}
+  .q-counter{font-size:11px;}
+
+  /* Questão — pergunta em cima, textarea grande, botão fixo no rodapé */
+  .question-card{
+    padding:1.25rem;border-radius:14px;
+    padding-bottom:80px; /* espaço para o botão fixo */
+  }
+  .q-meta{margin-bottom:1rem;}
+  .q-text{font-size:15px;line-height:1.65;}
+  .q-textarea{
+    min-height:180px;
+    font-size:16px; /* evita zoom automático iOS */
+    margin-top:1rem;
+  }
+  /* Botão Próxima fixo no rodapé */
+  .q-actions{
+    position:fixed;bottom:0;left:0;right:0;z-index:50;
+    background:rgba(29,29,31,.97);
+    border-top:1px solid var(--border);
+    padding:.875rem 1rem calc(.875rem + env(safe-area-inset-bottom));
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .btn-confirm{
+    padding:12px 24px;font-size:14px;
+    flex:1;margin-left:.75rem;
+  }
+  .char-count{font-size:11px;flex-shrink:0;}
+
+  /* ── REVISÃO TREINO ───────────────────── */
+  .result-screen{padding:1.5rem 1rem 5rem;}
+  .result-title{font-size:26px;}
+  .result-stats{grid-template-columns:1fr 1fr;}
+  .revisao-cols{grid-template-columns:1fr;}
+  .revisao-card{padding:1.25rem;}
+  .revisao-pergunta{font-size:14px;}
+  .revisao-total-num{font-size:44px;}
+
+  /* ── HALL DO CQ ───────────────────────── */
+  #hall-screen{padding:1.25rem 1rem;max-width:100%;}
+  .hall-grid{
+    grid-template-columns:1fr;
+    gap:.75rem;
+  }
+  .hall-admin-bar{flex-direction:column;align-items:flex-start;gap:.75rem;}
+  .hall-filter{margin-top:0;gap:.4rem;}
+  .hall-filter-btn{font-size:11px;padding:4px 11px;}
+
+  /* ── MINHA PROVA ──────────────────────── */
+  #minha-prova-screen > div{padding:1.25rem 1rem !important;}
+
+  /* ── ADMIN ────────────────────────────── */
+  #admin-screen{padding:1.25rem 1rem;max-width:100%;}
+  .admin-tabs{width:100%;overflow-x:auto;padding-bottom:2px;-webkit-overflow-scrolling:touch;}
+  .admin-tab{font-size:12px;padding:6px 12px;white-space:nowrap;}
+  .admin-content{padding:1.25rem;}
+  .control-row{flex-direction:column;align-items:flex-start;gap:.75rem;}
+  .q-form-grid{grid-template-columns:1fr;}
+
+  /* ── AUTH ─────────────────────────────── */
+  .auth-title{font-size:28px;}
+  .auth-sub{font-size:14px;margin-bottom:1.75rem;}
+  .auth-card{padding:1.5rem;}
+
+  /* ── MODAL ────────────────────────────── */
+  .modal{padding:1.5rem;border-radius:16px 16px 0 0;max-height:92vh;
+    position:fixed;bottom:0;left:0;right:0;width:100%;max-width:100%;}
+  #modal-overlay{align-items:flex-end;}
+  .modal h3{font-size:17px;margin-bottom:1.25rem;}
+
+  /* ── TOAST ────────────────────────────── */
+  #toast{bottom:1rem;right:.875rem;left:.875rem;}
+  .toast-item{min-width:unset;width:100%;}
+
+  /* ── ALERTA PROVA ─────────────────────── */
+  #prova-alerta{
+    bottom:1rem;left:.875rem;right:.875rem;
+    transform:none;max-width:100%;width:auto;
+    flex-direction:column;text-align:center;gap:.875rem;
+    padding:1.1rem 1.25rem;
+  }
+  #prova-alerta .alerta-btn{width:100%;}
+}
+
+/* Tablet — 2 colunas no Hall */
+@media(min-width:480px) and (max-width:768px){
+  .hall-grid{grid-template-columns:1fr 1fr;}
+}
+
+/* Desktop — esconde elementos mobile */
+@media(min-width:769px){
+  #mob-menu-btn{display:none;}
+  #mob-drawer{display:none;}
+  #mob-drawer-overlay{display:none !important;}
+}
+
+/* ── RANKING ────────────────────────────── */
+#ranking-screen{padding:2.5rem 3rem;max-width:900px;margin:0 auto;}
+.ranking-tabs{display:flex;gap:4px;margin-bottom:1.5rem;background:rgba(255,255,255,.05);padding:3px;border-radius:12px;width:fit-content;}
+.ranking-tab{background:none;border:none;color:var(--c4);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;padding:7px 18px;border-radius:9px;cursor:pointer;transition:all .15s;}
+.ranking-tab.active{background:var(--bg-card);color:var(--c1);box-shadow:0 1px 4px rgba(0,0,0,.3);}
+.ranking-item{display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;cursor:pointer;transition:all .2s;animation:rankPop .3s both;}
+.ranking-item:hover{border-color:var(--border-m);transform:translateX(4px);}
+.ranking-item.rank-1{border-color:rgba(255,200,50,.3);background:rgba(255,200,50,.04);}
+.ranking-item.rank-2{border-color:rgba(180,180,200,.2);}
+.ranking-item.rank-3{border-color:rgba(180,120,60,.2);}
+.rank-num{font-size:18px;font-weight:700;color:var(--c4);min-width:32px;text-align:center;}
+.rank-num.r1{color:#ffd700;}
+.rank-num.r2{color:#aab0bc;}
+.rank-num.r3{color:#b07840;}
+.rank-avatar{width:42px;height:42px;border-radius:50%;border:1.5px solid var(--border-m);image-rendering:pixelated;flex-shrink:0;}
+.rank-nick{font-size:14px;font-weight:600;color:var(--c1);}
+.rank-sub{font-size:12px;color:var(--c4);margin-top:2px;}
+.rank-val{font-size:20px;font-weight:700;color:var(--c1);}
+.rank-val-sub{font-size:11px;color:var(--c4);text-align:right;}
+@keyframes rankPop{from{opacity:0;transform:translateX(-12px);}to{opacity:1;transform:translateX(0);}}
+
+/* ── PERFIL ────────────────────────────── */
+#perfil-screen{padding:2rem 3rem;max-width:1100px;margin:0 auto;}
+.perfil-card-normal{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;overflow:hidden;}
+.perfil-header-normal{display:flex;align-items:center;gap:1.5rem;padding:2rem;border-bottom:1px solid var(--border);}
+.perfil-avatar-wrap{position:relative;flex-shrink:0;}
+.perfil-avatar{width:88px;height:88px;border-radius:50%;border:2px solid var(--border-m);image-rendering:pixelated;}
+.perfil-cargo-tag{position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);background:var(--bg-deep);border:1px solid var(--border-m);border-radius:99px;padding:2px 10px;font-size:10px;font-weight:600;color:var(--c3);white-space:nowrap;}
+.perfil-nome{font-size:28px;font-weight:700;color:var(--c1);letter-spacing:-.5px;}
+.perfil-patente{font-size:14px;color:var(--c4);margin-top:4px;}
+.perfil-body{padding:2rem;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.perfil-stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;}
+.perfil-stat{background:var(--bg-deep);border:1px solid var(--border);border-radius:12px;padding:1rem;}
+.perfil-stat-num{font-size:24px;font-weight:700;color:var(--c1);}
+.perfil-stat-label{font-size:11px;color:var(--c4);margin-top:3px;}
+.perfil-emblemas-grid{display:flex;flex-wrap:wrap;gap:.625rem;}
+.emblema-item{width:44px;height:44px;border-radius:10px;background:var(--bg-deep);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;overflow:visible;transition:transform .15s,border-color .15s;cursor:default;position:relative;}
+.emblema-item:hover{transform:scale(1.12);border-color:var(--border-m);}
+.emblema-item img{width:36px;height:36px;object-fit:contain;image-rendering:pixelated;}
+.emblema-tooltip{
+  position:absolute;
+  bottom:calc(100% + 10px);
+  left:50%;
+  transform:translateX(-50%) translateY(6px);
+  background:rgba(18,18,20,.98);
+  border:1px solid var(--border-m);
+  border-radius:10px;
+  padding:9px 13px;
+  pointer-events:none;
+  opacity:0;
+  transition:opacity .18s, transform .18s;
+  z-index:9999;
+  min-width:150px;
+  max-width:210px;
+  text-align:center;
+  box-shadow:0 8px 28px rgba(0,0,0,.5);
+  white-space:normal;
+}
+.emblema-tooltip::after{
+  content:'';
+  position:absolute;
+  top:100%;
+  left:50%;
+  transform:translateX(-50%);
+  border:5px solid transparent;
+  border-top-color:var(--border-m);
+}
+.emblema-item:hover .emblema-tooltip{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}
+.emblema-tooltip-nome{
+  font-size:12px;
+  font-weight:700;
+  color:var(--c1);
+  margin-bottom:4px;
+  letter-spacing:-.1px;
+}
+.emblema-tooltip-desc{
+  font-size:10px;
+  color:var(--c4);
+  line-height:1.55;
+}
+
+/* Perfil admin */
+.perfil-card-admin{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);border:1px solid rgba(100,180,255,.15);border-radius:20px;overflow:hidden;}
+.perfil-header-admin{padding:2rem;display:flex;align-items:center;gap:1.5rem;border-bottom:1px solid rgba(100,180,255,.1);position:relative;}
+.perfil-header-admin::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at top left,rgba(100,180,255,.08) 0%,transparent 60%);pointer-events:none;}
+.perfil-nome-admin{font-size:28px;font-weight:700;color:#e8f4fd;letter-spacing:-.5px;}
+.admin-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(100,180,255,.12);border:1px solid rgba(100,180,255,.25);border-radius:99px;padding:4px 12px;font-size:11px;font-weight:600;color:#7ec8f5;margin-top:6px;}
+
+/* Perfil Deusa */
+@keyframes goldShimmer{0%{background-position:200% center;}100%{background-position:-200% center;}}
+@keyframes darkGlow{0%,100%{box-shadow:0 0 20px rgba(0,0,0,.8),0 0 40px rgba(139,0,0,.15);}50%{box-shadow:0 0 30px rgba(0,0,0,.9),0 0 60px rgba(139,0,0,.25);}}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+.perfil-card-deusa{background:linear-gradient(135deg,#1a1200 0%,#2d2000 40%,#1a1500 100%);border:1px solid rgba(255,200,50,.2);border-radius:20px;overflow:hidden;animation:darkGlow 4s ease-in-out infinite;}
+.perfil-header-deusa{padding:2rem;display:flex;align-items:center;gap:1.5rem;border-bottom:1px solid rgba(255,200,50,.15);position:relative;overflow:hidden;}
+.perfil-header-deusa::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(255,200,50,.12) 0%,transparent 65%);pointer-events:none;}
+.perfil-header-deusa::after{content:'✦ ✦ ✦';position:absolute;top:12px;right:16px;font-size:10px;color:rgba(255,200,50,.3);letter-spacing:4px;}
+.perfil-avatar-deusa{width:88px;height:88px;border-radius:50%;border:2.5px solid rgba(255,200,50,.5);box-shadow:0 0 20px rgba(255,180,0,.25);animation:float 3s ease-in-out infinite;image-rendering:pixelated;}
+.perfil-nome-deusa{font-size:28px;font-weight:700;background:linear-gradient(90deg,#ffd700,#ffb347,#ffd700,#ffe066);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:goldShimmer 3s linear infinite;}
+.deusa-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(255,200,50,.12);border:1px solid rgba(255,200,50,.3);border-radius:99px;padding:4px 14px;font-size:11px;font-weight:700;color:#ffd700;margin-top:6px;}
+.perfil-stat-deusa{background:rgba(255,200,50,.06);border:1px solid rgba(255,200,50,.12);border-radius:12px;padding:1rem;}
+.perfil-stat-num-deusa{font-size:24px;font-weight:700;color:#ffd700;}
+.perfil-stat-label-deusa{font-size:11px;color:rgba(255,200,50,.5);margin-top:3px;}
+
+/* Perfil bryanrx */
+.perfil-card-bryanrx{background:#0d0d0d;border:1px solid rgba(255,30,30,.15);border-radius:20px;overflow:hidden;position:relative;}
+.perfil-card-bryanrx::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,0,0,.015) 2px,rgba(255,0,0,.015) 4px);pointer-events:none;z-index:0;}
+.perfil-header-bryanrx{padding:2rem;display:flex;align-items:center;gap:1.5rem;border-bottom:1px solid rgba(255,30,30,.1);position:relative;z-index:1;}
+.perfil-avatar-bryanrx{width:88px;height:88px;border-radius:50%;border:2px solid rgba(200,0,0,.4);box-shadow:0 0 0 4px rgba(200,0,0,.08),0 0 30px rgba(200,0,0,.2);image-rendering:pixelated;}
+.perfil-nome-bryanrx{font-size:28px;font-weight:700;color:#e0e0e0;font-family:'SF Mono',monospace;}
+.bryanrx-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(200,0,0,.1);border:1px solid rgba(200,0,0,.25);border-radius:4px;padding:4px 12px;font-size:11px;font-weight:600;color:#ff4444;letter-spacing:.5px;margin-top:6px;font-family:'SF Mono',monospace;}
+.bryanrx-tag::before{content:'> ';opacity:.6;}
+.perfil-body-bryanrx{padding:2rem;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;position:relative;z-index:1;}
+.perfil-stat-bryanrx{background:rgba(255,30,30,.04);border:1px solid rgba(255,30,30,.1);border-radius:8px;padding:1rem;}
+.perfil-stat-num-bryanrx{font-size:24px;font-weight:700;color:#ff4444;font-family:'SF Mono',monospace;}
+.perfil-stat-label-bryanrx{font-size:11px;color:rgba(255,100,100,.5);margin-top:3px;font-family:'SF Mono',monospace;}
+
+/* Mobile perfil/ranking */
+@media(max-width:768px){
+  #perfil-screen{padding:1.25rem 1rem;}
+  .perfil-body,.perfil-body-deusa,.perfil-body-bryanrx{grid-template-columns:1fr;}
+  .perfil-header-normal,.perfil-header-admin,.perfil-header-deusa,.perfil-header-bryanrx{flex-direction:column;text-align:center;}
+  #ranking-screen{padding:1.25rem 1rem;}
+  .ranking-tabs{width:100%;}
 }
 </style>
 </head>
 <body>
- 
+
 <header id="header">
   <div id="logo-area">
     <div id="logo-mark"><img src="https://i.imgur.com/gjSYhuy.png" alt="CEQM" style="width:32px;height:32px;object-fit:contain;image-rendering:auto;filter:brightness(1.1);"></div>
@@ -462,6 +770,8 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
     <button class="nav-btn active" onclick="showScreen('home')">Início</button>
     <button class="nav-btn" onclick="startSimulado('treino')">Treino</button>
     <button class="nav-btn" id="real-nav-btn" onclick="tentarReal()">Simulado Real</button>
+    <button class="nav-btn" onclick="showScreen('minha-prova')">Minha Prova</button>
+    <button class="nav-btn" onclick="showScreen('ranking')">Ranking</button>
     <button class="nav-btn" onclick="showScreen('hall')">Hall do CQ</button>
     <button class="nav-btn admin-btn hidden" id="admin-nav-btn" onclick="showScreen('admin')">Admin</button>
   </nav>
@@ -472,10 +782,65 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
     </div>
     <img id="avatar-img" src="" alt="avatar" onerror="this.src='data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='"/>
   </div>
+
+  <button id="mob-menu-btn" onclick="abrirDrawer()" aria-label="Menu">
+  <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+
 </header>
+
+<div id="mob-drawer-overlay" onclick="fecharDrawer()"></div>
  
+<div id="mob-drawer">
+  <div class="mob-drawer-header">
+    <div class="mob-drawer-title">Menu</div>
+    <button class="mob-drawer-close" onclick="fecharDrawer()">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="mob-drawer-nav">
+    <button class="mob-nav-item active" id="drawerBtn-home" onclick="showScreen('home');fecharDrawer()">
+      <svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H5a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+      Início
+    </button>
+    <button class="mob-nav-item" id="drawerBtn-treino" onclick="startSimulado('treino');fecharDrawer()">
+      <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      Simulado Treino
+    </button>
+    <button class="mob-nav-item real-item" id="drawerBtn-real" onclick="tentarReal();fecharDrawer()">
+      <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      Simulado Real
+    </button>
+    <button class="mob-nav-item" id="drawerBtn-minha-prova" onclick="showScreen('minha-prova');fecharDrawer()">
+      <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      Minha Prova
+    </button>
+    <button class="mob-nav-item" id="drawerBtn-ranking" onclick="showScreen('ranking');fecharDrawer()">
+      <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      Ranking
+    </button>
+    <button class="mob-nav-item" id="drawerBtn-hall" onclick="showScreen('hall');fecharDrawer()">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+      Hall do CQ
+    </button>
+    <div class="mob-nav-divider"></div>
+    <button class="mob-nav-item hidden" id="drawerBtn-admin" onclick="showScreen('admin');fecharDrawer()">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+      Admin
+    </button>
+  </div>
+  <div class="mob-drawer-footer">
+    <img id="mob-drawer-avatar" src="" style="width:36px;height:36px;border-radius:50%;border:1.5px solid var(--border-m);image-rendering:pixelated;" onerror="this.style.display='none'">
+    <div>
+      <div class="mob-drawer-nick" id="mob-drawer-nick">—</div>
+      <div class="mob-drawer-cargo">Conectado</div>
+    </div>
+  </div>
+</div>
+
+
 <main id="main">
- 
+
 <!-- AUTH -->
 <div id="auth-screen">
   <div class="auth-logo-mark stagger-1" style="background:transparent;box-shadow:none;"><img src="https://i.imgur.com/gjSYhuy.png" alt="CEQM" style="width:56px;height:56px;object-fit:contain;filter:brightness(1.1);"></div>
@@ -497,7 +862,7 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
     <button class="btn-primary hidden" id="btn-entrar" onclick="entrarNoSistema()">Continuar</button>
   </div>
 </div>
- 
+
 <!-- HOME -->
 <div id="home-screen" class="hidden">
   <div class="hero-section stagger-1">
@@ -508,7 +873,7 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
     </div>
     <div class="hero-sub">Escolha uma modalidade e comece a praticar os códigos militares.</div>
   </div>
- 
+
   <div class="bento-grid">
     <div class="bento-card stagger-2" onclick="startSimulado('treino')">
       <div class="bento-icon">
@@ -527,7 +892,7 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
       <div class="bento-badge badge-locked" id="real-badge"><span class="dot-badge dot-locked"></span>Bloqueado</div>
     </div>
   </div>
- 
+
   <div class="stats-bento">
     <div class="stat-card stagger-2">
       <div class="stat-label"><span class="stat-label-dot" style="background:var(--green);"></span>Treinos realizados</div>
@@ -547,7 +912,7 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
     </div>
   </div>
 </div>
- 
+
 <!-- SIMULADO -->
 <div id="simulado-screen" class="hidden fade-screen">
   <div class="sim-header">
@@ -561,7 +926,7 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
   <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progress-fill" style="width:10%;"></div></div>
   <div id="question-area"></div>
 </div>
- 
+
 <!-- RESULT -->
 <div id="result-screen" class="hidden">
   <div class="result-screen">
@@ -577,7 +942,57 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
     </div>
   </div>
 </div>
- 
+
+<!-- MINHA PROVA -->
+<div id="minha-prova-screen" class="hidden fade-screen">
+  <div style="padding:2.5rem 3rem;max-width:1000px;margin:0 auto;">
+    <div class="hero-section stagger-1" style="margin-bottom:2rem;">
+      <div class="hero-greeting">Simulado Real</div>
+      <div class="hero-title" style="font-size:32px;">Minha Prova</div>
+      <div class="hero-sub">Acompanhe a correção e veja sua nota e gabarito de cada questão.</div>
+    </div>
+    <div id="minha-prova-content" class="stagger-2"></div>
+  </div>
+</div>
+
+<!-- RANKING -->
+<div id="ranking-screen" class="hidden fade-screen">
+  <div style="padding:2.5rem 3rem;max-width:900px;margin:0 auto;">
+    <div class="hero-section stagger-1" style="margin-bottom:2rem;">
+      <div class="hero-greeting">Competição</div>
+      <div class="hero-title" style="font-size:32px;">Ranking</div>
+      <div class="hero-sub">Top 10 membros por simulados reais e taxa de acerto. Admins não participam.</div>
+    </div>
+    <div class="ranking-tabs stagger-2">
+      <button class="ranking-tab active" onclick="switchRankingTab('real')">🏆 Simulados Reais</button>
+      <button class="ranking-tab" onclick="switchRankingTab('treino')">📊 Taxa de Acerto</button>
+    </div>
+    <div id="ranking-content" class="stagger-3"></div>
+  </div>
+</div>
+
+<!-- PERFIL -->
+<div id="perfil-screen" class="hidden fade-screen">
+  <div style="padding:2rem 3rem;max-width:900px;margin:0 auto;">
+    <div style="margin-bottom:1.25rem;display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;">
+      <button class="back-btn" id="perfil-back-btn" onclick="showScreen('home')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>Voltar
+      </button>
+      <button class="btn-sm" onclick="showScreen('ranking')" style="display:flex;align-items:center;gap:6px;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Ver Ranking
+      </button>
+      <div style="display:flex;align-items:center;gap:6px;margin-left:auto;background:var(--bg-card);border:1px solid var(--border);border-radius:99px;padding:4px 4px 4px 14px;">
+        <input type="text" id="perfil-busca" placeholder="Buscar perfil..." 
+          style="background:none;border:none;outline:none;color:var(--c1);font-family:'Inter',sans-serif;font-size:13px;width:160px;"
+          onkeydown="if(event.key==='Enter')buscarPerfil()">
+        <button onclick="buscarPerfil()" style="background:var(--c1);border:none;color:#000;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;padding:5px 14px;border-radius:99px;cursor:pointer;">Buscar</button>
+      </div>
+    </div>
+    <div id="perfil-content"></div>
+  </div>
+</div>
+
 <!-- HALL DO CQ -->
 <div id="hall-screen" class="hidden fade-screen">
   <div class="hero-section stagger-1" style="margin-bottom:1.5rem;">
@@ -585,7 +1000,7 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
     <div class="hero-title" style="font-size:32px;">Hall do CQ</div>
     <div class="hero-sub">Todos que conquistaram o Certificado de Qualificação de Oficiais Intermediários pelo CEQM.</div>
   </div>
- 
+
   <div class="hall-admin-bar stagger-2">
     <div class="hall-filter" id="hall-filter"></div>
     <div style="display:flex;gap:.5rem;flex-shrink:0;">
@@ -595,11 +1010,11 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
       <input type="file" id="input-json-upload" accept=".json" class="hidden" onchange="importarJSON(event)">
     </div>
   </div>
- 
+
   <div class="hall-count stagger-2" id="hall-count"></div>
   <div class="hall-grid" id="hall-grid"></div>
 </div>
- 
+
 <!-- ADMIN -->
 <div id="admin-screen" class="hidden fade-screen">
   <div class="hero-section stagger-1" style="margin-bottom:2rem;">
@@ -612,6 +1027,8 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
     <button class="admin-tab" onclick="switchAdminTab('correcoes')">Correções</button>
     <button class="admin-tab" onclick="switchAdminTab('perguntas')">Perguntas Treino</button>
     <button class="admin-tab" onclick="switchAdminTab('membros')">Membros</button>
+    <button class="admin-tab" onclick="switchAdminTab('passes')">Passes</button>
+    <button class="admin-tab" onclick="switchAdminTab('emblemas')">Emblemas</button>
   </div>
   <div class="admin-content stagger-2">
     <div id="tab-controle">
@@ -625,7 +1042,7 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
       </div>
       <div class="divider"></div>
       <div class="section-label">Configuração Atual</div>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;" id="config-display"></div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;" id="config-display"></div>
     </div>
     <!-- SIMULADO REAL TAB -->
     <div id="tab-simulado-real" class="hidden">
@@ -654,16 +1071,34 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
         <tbody id="sr-correcoes-body"></tbody>
       </table></div>
     </div>
- 
+
     <div id="tab-correcoes" class="hidden">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
-        <div class="section-label" style="margin:0;">Respostas do Simulado Real</div>
-        <button class="btn-sm" onclick="loadCorrecoes()">Atualizar</button>
+      <div id="correcoes-lista-view">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+          <div>
+            <div class="section-label" style="margin:0;">Candidatos por Edição</div>
+            <div style="font-size:12px;color:var(--c4);margin-top:3px;">Clique no candidato para corrigir a prova completa.</div>
+          </div>
+          <div style="display:flex;gap:.5rem;align-items:center;">
+            <select id="filtro-edicao-correcao" class="modal-input" style="width:130px;padding:5px 28px 5px 10px;font-size:12px;" onchange="loadCorrecoes()">
+              <option value="">Todas as edições</option>
+            </select>
+            <button class="btn-sm" onclick="loadCorrecoes()">↺ Atualizar</button>
+          </div>
+        </div>
+        <div id="correcoes-candidatos-grid" style="display:flex;flex-direction:column;gap:.5rem;"></div>
       </div>
-      <div class="table-wrap"><table>
-        <thead><tr><th>Nick</th><th>Pergunta</th><th>Resposta</th><th>Nota</th><th></th></tr></thead>
-        <tbody id="correcoes-body"></tbody>
-      </table></div>
+      <div id="correcoes-prova-view" class="hidden">
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem;">
+          <button class="btn-sm" onclick="voltarListaCandidatos()">← Voltar</button>
+          <div>
+            <div style="font-size:15px;font-weight:600;color:var(--c1);" id="correcoes-candidato-titulo">—</div>
+            <div style="font-size:12px;color:var(--c4);" id="correcoes-candidato-edicao">—</div>
+          </div>
+          <button class="btn-sm dark" style="margin-left:auto;" onclick="salvarTodasCorrecoes()">💾 Salvar todas</button>
+        </div>
+        <div id="correcoes-prova-body" style="display:flex;flex-direction:column;gap:1rem;"></div>
+      </div>
     </div>
     <div id="tab-perguntas" class="hidden">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
@@ -690,16 +1125,48 @@ select.modal-input{appearance:none;cursor:pointer;background-image:url("data:ima
         <tbody id="membros-body"></tbody>
       </table></div>
     </div>
-  </div>
-</div>
- 
+    <!-- ABA PASSES -->
+    <div id="tab-passes" class="hidden">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+        <div>
+          <div class="section-label" style="margin:0;">Passes do Simulado Real</div>
+          <div style="font-size:12px;color:var(--c4);margin-top:4px;">Cada nick tem 1 tentativa. Gerencie individualmente ou reset todos.</div>
+        </div>
+        <div style="display:flex;gap:.5rem;">
+          <button class="btn-sm" onclick="loadPassesAdmin()">&#8635; Atualizar</button>
+          <button class="btn-sm" style="color:#ff453a;border-color:rgba(255,69,58,.3);" onclick="resetarTodosPassesAdmin()">&#128465; Resetar todos</button>
+        </div>
+      </div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Nick</th><th>Data/Hora</th><th></th></tr></thead>
+        <tbody id="passes-body"></tbody>
+      </table></div>
+    </div>
+    <!-- ABA EMBLEMAS -->
+    <div id="tab-emblemas" class="hidden">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+        <div><div class="section-label" style="margin:0;">Distribuir Emblemas</div><div style="font-size:12px;color:var(--c4);margin-top:4px;">Dê ou remova emblemas especiais de qualquer membro.</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div>
+          <div class="form-group" style="margin-bottom:.75rem;"><label>Nick do membro</label>
+            <input type="text" class="modal-input" id="emblema-nick" placeholder="NickExato" oninput="carregarEmblemaMembro()">
+          </div>
+          <div id="emblema-perfil-mini" style="min-height:60px;"></div>
+        </div>
+        <div>
+          <div class="form-group"><label>Emblemas disponíveis</label></div>
+          <div style="display:flex;flex-direction:column;gap:.5rem;" id="emblemas-lista-admin"></div>
+        </div>
+      </div>
+    </div>
 </main>
- 
+
 <div id="modal-overlay" onclick="closeModalOutside(event)">
   <div class="modal" id="modal-content"></div>
 </div>
 <div id="toast"></div>
- 
+
 <script>
 // ── TYPEWRITER ───────────────────────────
 function runTypewriter(el, words, speed=80, pause=2200) {
@@ -713,7 +1180,7 @@ function runTypewriter(el, words, speed=80, pause=2200) {
   }
   tick();
 }
- 
+
 // ── HOVER GLOW on bento cards ────────────
 document.querySelectorAll('.bento-card').forEach(card=>{
   card.addEventListener('mousemove',e=>{
@@ -722,7 +1189,7 @@ document.querySelectorAll('.bento-card').forEach(card=>{
     card.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');
   });
 });
- 
+
 // ── ANIMATED COUNTER ─────────────────────
 function animateCounter(el, target, suffix='', duration=1200) {
   if(target==='—'||target===null||target===undefined){el.textContent='—';el.classList.remove('shimmer-active');return;}
@@ -741,7 +1208,7 @@ function animateCounter(el, target, suffix='', duration=1200) {
   requestAnimationFrame(step);
 }
 </script>
- 
+
 <div id="prova-alerta" style="display:none;">
   <div class="alerta-icon">📋</div>
   <div class="alerta-texto">
@@ -750,9 +1217,8 @@ function animateCounter(el, target, suffix='', duration=1200) {
   </div>
   <button class="alerta-btn" onclick="fecharAlerta();tentarReal()">Iniciar agora</button>
 </div>
- 
+
 <script>
-// Polling a cada 30s para detectar liberação do simulado real
 let _provaJaAlertada = false;
 function fecharAlerta() {
   document.getElementById('prova-alerta').style.display = 'none';
@@ -764,7 +1230,6 @@ setInterval(async () => {
     const data = await apiGet('config');
     const eraAtivo = state.config.simulado_real_ativo;
     state.config.simulado_real_ativo = data.simulado_real_ativo;
-    // Só alerta se acabou de ser liberado
     if (!eraAtivo && data.simulado_real_ativo) {
       updateRealMode();
       document.getElementById('prova-alerta').style.display = 'flex';
@@ -777,6 +1242,30 @@ setInterval(async () => {
 }, 30000);
 </script>
 
-<script src="simulado-rcc-script.js"></script>
+<script src="https://raw.githubusercontent.com/Math2261/CEQM_Project/main/ceqm.js"></script>
+
+<!-- EU  -->
+  <div style="
+    text-align:center;
+    padding:2rem 1rem 2.5rem;
+    margin-top:2rem;
+    border-top:1px solid var(--border);
+  ">
+    <div style="display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:.875rem;">
+      <div style="width:80px;height:1px;background:linear-gradient(to right,transparent,var(--border));"></div>
+      <img src="https://i.imgur.com/gjSYhuy.png" style="width:18px;height:18px;opacity:.35;filter:grayscale(1);">
+      <div style="width:80px;height:1px;background:linear-gradient(to left,transparent,var(--border));"></div>
+    </div>
+    <div style="font-size:11px;color:var(--c5);letter-spacing:.3px;">
+      Desenvolvido por
+      <span style="color:var(--c3);font-weight:700;font-family:'SF Mono',monospace;letter-spacing:.5px;">MÆTH™</span>
+      <span style="color:var(--c6);margin:0 5px;">·</span>
+      <span style="color:var(--c5);font-family:'SF Mono',monospace;">bryanrx</span>
+    </div>
+    <div style="font-size:10px;color:var(--c6);margin-top:4px;letter-spacing:.3px;">
+      CEQM · Centro Estratégico de Qualificação Militar · Polícia RCC
+    </div>
+  </div>
+
 </body>
 </html>
